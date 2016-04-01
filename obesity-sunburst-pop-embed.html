@@ -1,0 +1,2538 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Adiposity > Data Visualisations > NCD-RisC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme-chipotle.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/3d-ncd.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600,700" rel="stylesheet" type="text/css">
+        <link href="css/font-opensans.css" rel="stylesheet" type="text/css">
+		<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/nouislider.min.css" />
+		
+		<style>
+		.mys{
+			-webkit-appearance: none;
+			transform: translate(0px, 9px);
+			font-size: 16px;
+			font-weight: normal;
+			color:#6f828e;
+			font-size: 11px;
+			border-radius: 0;
+			z-index: 1000;
+			//border: none;
+			border: 1px solid #DDDDDD;
+			background: transparent;
+			//width: 380px;
+			//overflow: hidden;
+			padding-top: 0px;
+			//height: 70px;
+			//text-indent: 10px;
+			//color: #ffffff;
+			
+		}
+		
+		
+		.switch2 {
+			position: relative;
+			display: block;
+			vertical-align: top;
+			width: 100px;
+			height: 28px;
+			padding: 0px;
+			margin: 0 0px 0px 0;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+			border-radius: 0px;
+			box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+		}
+		.switch2-input {
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+		.switch2-label {
+			position: relative;
+			display: block;
+			height: inherit;
+			font-size: 10px;
+			//text-transform: uppercase;
+			background: #eceeef;
+			border-radius: inherit;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+		}
+		.switch2-label:before, .switch2-label:after {
+			position: absolute;
+			top: 50%;
+			margin-top: -.5em;
+			line-height: 1;
+			-webkit-transition: inherit;
+			-moz-transition: inherit;
+			-o-transition: inherit;
+			transition: inherit;
+		}
+		.switch2-label:before {
+			content: attr(data-off);
+			right: 11px;
+			color: #aaaaaa;
+			text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+		}
+		.switch2-label:after {
+			content: attr(data-on);
+			left: 11px;
+			color: #FFFFFF;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+			opacity: 0;
+		}
+		.switch2-input:checked ~ .switch2-label {
+			background: #E1B42B;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+		}
+		.switch2-input:checked ~ .switch2-label:before {
+			opacity: 0;
+		}
+		.switch2-input:checked ~ .switch2-label:after {
+			opacity: 1;
+		}
+		.switch2-handle {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			width: 28px;
+			height: 28px;
+			background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+			background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+			border-radius: 100%;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		.switch2-handle:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -6px 0 0 -6px;
+			width: 12px;
+			height: 12px;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+			border-radius: 6px;
+			box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+		}
+		.switch2-input:checked ~ .switch2-handle {
+			left: 74px;
+			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		 
+		/* Transition
+		========================== */
+		.switch2-label, .switch2-handle {
+			transition: All 0.3s ease;
+			-webkit-transition: All 0.3s ease;
+			-moz-transition: All 0.3s ease;
+			-o-transition: All 0.3s ease;
+		}
+
+		.switch-slide2 {
+			padding: 0;
+			margin: 3px 3px 3px 3px;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-slide2 .switch2-label {
+			box-shadow: none;
+			background: none;
+			overflow: hidden;
+		}
+		.switch-slide2 .switch2-label:after, .switch-slide2 .switch2-label:before {
+			width: 100%;
+			height: 100%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-slide2 .switch2-label:after {
+			color: #000000;
+			//background: #87CEEB;
+			background: #A9F5A9;//#eceeef;
+			left: -100px;
+		}
+		.switch-slide2 .switch2-label:before {
+			background: #eceeef;
+		}
+		.switch-slide2 .switch2-handle {
+			display: none;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label:before {
+			left: 100px;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label:after {
+			left: 0;
+		}
+
+
+
+
+
+
+		.switch {
+			position: relative;
+			display: block;
+			vertical-align: top;
+			width: 80px;
+			height: 28px;
+			padding: 0px;
+			margin: 0 0px 0px 0;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+			border-radius: 0px;
+			box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+		}
+		.switch-input {
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+		.switch-label {
+			position: relative;
+			display: block;
+			height: inherit;
+			font-size: 12px;
+			//text-transform: uppercase;
+			background: #eceeef;
+			border-radius: inherit;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+		}
+		.switch-label:before, .switch-label:after {
+			position: absolute;
+			top: 50%;
+			margin-top: -.5em;
+			line-height: 1;
+			-webkit-transition: inherit;
+			-moz-transition: inherit;
+			-o-transition: inherit;
+			transition: inherit;
+		}
+		.switch-label:before {
+			content: attr(data-off);
+			right: 11px;
+			color: #000000;
+			text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+		}
+		.switch-label:after {
+			content: attr(data-on);
+			left: 11px;
+			color: #000000;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+			opacity: 0;
+		}
+		.switch-input:checked ~ .switch-label {
+			background: #E1B42B;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+		}
+		.switch-input:checked ~ .switch-label:before {
+			opacity: 0;
+		}
+		.switch-input:checked ~ .switch-label:after {
+			opacity: 1;
+		}
+		.switch-handle {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			width: 28px;
+			height: 28px;
+			background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+			background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+			border-radius: 100%;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		.switch-handle:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -6px 0 0 -6px;
+			width: 12px;
+			height: 12px;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+			border-radius: 6px;
+			box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+		}
+		.switch-input:checked ~ .switch-handle {
+			left: 74px;
+			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		 
+		/* Transition
+		========================== */
+		.switch-label, .switch-handle {
+			transition: All 0.3s ease;
+			-webkit-transition: All 0.3s ease;
+			-moz-transition: All 0.3s ease;
+			-o-transition: All 0.3s ease;
+		}
+
+
+		.switch-yes-no {
+			padding: 0;
+			margin: 15px 0 0;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-yes-no .switch-label {
+			box-shadow: none;
+			background: none;
+		}
+		.switch-yes-no .switch-label:after, .switch-yes-no .switch-label:before {
+			width: 100%;
+			height: 70%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-yes-no .switch-label:after {
+			color: #FFFFFF;
+			background: #32CD32;
+			backface-visibility: hidden;
+			transform: rotateY(180deg);
+		}
+		.switch-yes-no .switch-label:before {
+			background: #eceeef;
+			backface-visibility: hidden;
+		}
+		.switch-yes-no .switch-handle {
+			display: none;
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label:before {
+			transform: rotateY(180deg)
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label:after {
+			transform: rotateY(0)
+		}
+
+
+		.switch-slide {
+			padding: 0;
+			margin: 5px 0 0;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-slide .switch-label {
+			box-shadow: none;
+			background: none;
+			overflow: hidden;
+		}
+		.switch-slide .switch-label:after, .switch-slide .switch-label:before {
+			width: 100%;
+			height: 100%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-slide .switch-label:after {
+			color: #000000;
+			//background: #87CEEB;
+			background: #eceeef;
+			left: -100px;
+		}
+		.switch-slide .switch-label:before {
+			background: #eceeef;
+		}
+		.switch-slide .switch-handle {
+			display: none;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label:before {
+			left: 100px;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label:after {
+			left: 0;
+		}
+
+		#slidertext{
+			//position:absolute;
+			font-size: 31px;
+			font-weight: bold;
+			color:#c8c8c8;//#707070;
+			transform: translate(-80px, 0px);
+			-webkit-transform: translate(-80px, 0px);
+			-moz-transform: translate(-80px, 0px);
+			-o-transform: translate(-80px, 0px);
+			-ms-transform: translate(-80px, 0px);
+		}
+		#graph-container {
+			//margin:10px;
+			border:0;
+			//border-radius: 5px;
+			//width:80%;
+			//overflow:hidden;
+			background: #ffffff;
+			//box-shadow: 2px 2px 2px 0px #a6a6a6; 
+		}
+		.hidden { 
+			display: none; 
+		}
+		div.tooltip {
+			color: #222; 
+			background: #fff; 
+			padding: .1em; 
+			text-shadow: #f5f5f5 0 1px 0;
+			border-radius: 2px; 
+			box-shadow: 0px 0px 2px 0px #a6a6a6; 
+			opacity: 0.9; 
+			position: absolute;
+			font-size: small;
+			line-height: 100%;
+			width:100px;
+			z-index:6000;
+		}
+		.bbt{
+			font-size: small;
+			font-weight: normal;
+		}	
+
+		.bbt2{
+			font-size: small;
+			font-weight: normal;
+		}	  
+		#grby {color:#aaa;padding:0;padding-right:5px;border:1px solid #eee}
+		
+		#grby2 {color:#aaa;padding:0;padding-right:5px;border:1px solid #eee}
+		
+		#playpause { 
+			 //display:block; 
+			 height:32px; width:32px; /* dimensions of the image */
+			 //background-repeat:no-repeat;
+			 cursor:pointer;
+			 //align="middle"
+			 transform: translate(0px, -2px);
+			-webkit-transform: translate(0px, -2px);
+			-moz-transform: translate(0px, -2px);
+			-o-transform: translate(0px, -2px);
+			-ms-transform: translate(0px, -2px);
+		}
+		#playpause.play { 
+			background-image:url("img2/play2-pause32.png");
+			display: block;
+		   
+			width: 32px;
+			height:  32px;
+			margin: -1.5px 0;
+			//align="middle"
+		}
+
+		#playpause.pause { 
+			background-image:url("img2/play-pause32.png");
+			display: block;
+			
+			width: 32px;
+			height:  32px;
+			margin: -1.5px 0;
+			//align="middle"
+		}
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+		circle {
+        stroke: black;
+        stroke-width: 1px;
+        opacity: .8;
+      }
+		.normal{
+			stroke-width: 1px;
+			stroke: black;
+		}
+		.unselected-underlined {
+			stroke-width: 3px;
+			stroke: black;
+		}
+		.underlined{
+			stroke-width: 3px;
+			stroke: red;
+		}
+		.label {
+				fill: white;
+				font-size: 16px;
+			  }
+
+		.behind{
+			z-index:-1000;
+			pointer-events: none;
+		}
+		.axis text {
+		//font-family: sans-serif;
+			font-size: 14px;
+		}
+		fieldset.scheduler-border {
+			border: 1px solid #eee !important;
+			padding: 0 0.4em 0.4em 0.4em !important;
+			margin: 0 0 0.1em 0 !important;height:44px;
+			-webkit-box-shadow:  0px 0px 0px 0px #000;
+					box-shadow:  0px 0px 0px 0px #000;
+			color:#aaa;		
+		}
+
+			legend.scheduler-border {
+				font-size: 1.0em !important;
+				font-weight: light !important;
+				text-align: left !important;
+				width:auto;
+				padding:0 1px;
+				border-bottom:none;color:#aaa;
+			}
+			.upward {
+			transform: translate(0px, -25px);
+			-webkit-transform: translate(0px, -25px);
+			-moz-transform: translate(0px, -25px);
+			-o-transform: translate(0px, -25px);
+			-ms-transform: translate(0px, -25px);
+			}
+			.rightward {
+			transform: translate(25px, 0px);
+			-webkit-transform: translate(25px, 0px);
+			-moz-transform: translate(25px, 0px);
+			-o-transform: translate(25px, 0px);
+			-ms-transform: translate(25px, 0px);
+			}
+			.leftward2 {
+			transform: translate(-45px, 0px);
+			-webkit-transform: translate(-45px, 0px);
+			-moz-transform: translate(-45px, 0px);
+			-o-transform: translate(-45px, 0px);
+			-ms-transform: translate(-45px, 0px);
+			}
+			
+			.noUi-horizontal.noUi-extended {
+				padding-right: 32px;
+			}
+			.noUi-horizontal.noUi-extended .noUi-handle {
+				left: -1px;
+			}
+			.noUi-horizontal.noUi-extended .noUi-origin  {
+				right: -32px;
+			}
+			path {
+			  stroke: #fff;
+			  fill-rule: evenodd;
+			}
+			
+		</style>
+		
+
+<script>
+  //(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ // ga('create', 'UA-75769110-1', 'auto');
+ // ga('send', 'pageview');
+
+</script>
+		
+    </head>
+    <body>
+		
+		<table>
+			<tr>
+				<td>
+					<label  class="switch2 switch-slide2" id ="var-col"  style="float:left;" >
+						<input class="switch2-input" type="checkbox" id="selectColor"/>
+						<span class="switch2-label" data-on="Colour-blind friendly" data-off="Colour-blind friendly"></span> 
+						<span class="switch2-handle"></span>
+					</label>
+				</td>
+				<td align="center">
+					<div id="slidertext" style="pointer-events: none;">2014</div>
+				</td>
+				<td>
+					<label class="switch switch-slide"  id ="var-pop" style="float:left">
+						<input class="switch-input" type="checkbox" id="selectGender"  />
+						<span class="switch-label" data-on="Men" data-off="Women"></span> 
+						<span class="switch-handle"></span>
+					</label>
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="3">
+					<div id="per" style="font-size:20px;font-weight: bold;color:#993300;position:absolute;width:200px;" >&nbsp;</div>
+					<div id="popcenter" style="z-index:4000;font-size:20px;font-weight: bold;color:#000000;position:absolute"  >&nbsp;</div>
+					<div id="graph-container"  ></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					
+					<div id="playpause" class="play" style="float:left;"></div>
+					<div style="float:right;pointer-events: none;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;">&nbsp;&nbsp;&nbsp;</div>
+					<div id="red" class="noUi-extended" style="float:left;"></div>
+					
+				</td>
+				
+			</tr>
+			
+		</table>
+		 
+		<div>
+							
+			
+			
+			
+			
+			
+					
+		</div>
+		
+		
+						
+				
+		<script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/flexslider.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/masonry.min.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/scripts.js"></script>
+
+        <script type="text/javascript" src="js2/colorbar.js"></script>
+		<script src="js2/jquery-ui.min.js"></script>
+        <script src="js2/colorbrewer.js"></script> 
+        <script src="js2/d3.min.js" charset="utf-8"></script>
+        <script src="js2/d3-legend.min.js"></script>
+        <script src="js2/d3.geo.projection.min.js"></script>
+        <script src="js2/topojson.min.js"></script>
+		<script src="js2/underscore-min.js"></script>
+		<script src="js2/nouislider.min.js"></script>
+	<script>
+
+
+var slider = document.getElementById('red');
+	noUiSlider.create(slider, {
+		start: [2014],
+		connect: 'lower',
+		step: 1,
+		range: {
+			'min': 1975,
+			'max': 2014
+		}//,
+		//tooltips: [  wNumb({ decimals: 0 }), wNumb({ decimals: 0 }) ],
+	});
+  
+function is_touch_device() {
+    return !!('ontouchstart' in window);
+ }
+//d3.select(window).on("resize", throttle);
+var duration = 10000;
+var zoom = d3.behavior.zoom()
+    .scaleExtent([1, 9])
+    .on("zoom", move);
+var scalezoom=1.0;
+var highlightedcountry=-1;
+
+var width =640;//((window.innerWidth*0.99)-311);//width = ((window.innerWidth*0.99)-261);//document.getElementById('graph-container').offsetWidth;
+var height =width*0.45;//(window.innerHeight-(document.getElementById('graph-container').style.top)-60);//(window.innerHeight*0.6);
+//if (height>(window.innerHeight*0.55)){
+//
+//	height = (window.innerHeight*0.72);
+//	width = height*2;
+	
+//}
+
+//document.getElementById('slidertext').style.left=(60)+"px";
+//document.getElementById('slidertext').style.top=(260)+"px";
+document.getElementById('per').style.top=(240)+"px";
+document.getElementById('per').style.left=(10)+"px";
+//document.getElementById('var-pop').style.left=((width*0.580)-40)+"px";
+
+//document.getElementById('var-col').style.top=(220)+"px";
+//document.getElementById('selectGender').style.top=(260)+"px";
+//d3.select("#slidertext").style("dy","20px");
+//document.getElementById('slidertext').style.top=((height*0.5))+"px";
+var topo,projection,path,svg,mg;
+//var graticule = d3.geo.graticule();
+var selected_country="";
+var tooltip = d3.select("#graph-container").append("div").attr("class", "tooltip hidden");
+//document.getElementById('myinfo').style.opacity=0;
+//document.getElementById('red').style.width=(width*0.66)+"px";
+//document.getElementById('imagesbar').style.height=height+"px";
+var cg;
+
+var selectedMode="all";
+var mycenters;
+var selectedColorMode="c1";
+var c2gradient="url(#gradient1)";
+var c3gradient="url(#gradient1)";
+var c4gradient="url(#gradient1)";
+var formatPer = d3.format(",.1%"); var formatPop = d3.format(".2s"); 
+d3.json("json/countries-data.json", function(error, data0) {
+
+	d3.json("json/covariates_country_data.json", function(error, mdata) {
+		d3.json("json/mini-country-obesity-population.json", function(error, mdata2) {
+		//var edu= parseFloat(mdata);
+			var years=[];
+			var data =[];
+			var subregion={};
+			for (country in mdata2){
+				if (country !="Country"){
+					var tmp=[];
+					for (var i=0;i<mdata2[country][0].length;i++){
+					//	nbs.push(parseFloat(data[selected_country][elem][1]));
+						  //order; edu=1/urb=2/gdp=7
+						var tmp_cov=mdata[country];
+						for (var j=0, k=tmp_cov.length;j<k;j++){
+							if (tmp_cov[j][0]==mdata2[country][0][i][0]){
+								if (years.indexOf(parseInt(mdata2[country][0][i][0]))==-1){
+									years.push(parseInt(mdata2[country][0][i][0]));
+								}
+								tmp.push({year:parseInt(mdata2[country][0][i][0]), urb:parseFloat(tmp_cov[j][1]),gdp:parseFloat(tmp_cov[j][7]),edu:parseFloat(tmp_cov[j][2]), men: [0,parseFloat(mdata2[country][0][i][1]),parseFloat(mdata2[country][0][i][2]),parseFloat(mdata2[country][0][i][3])], women: [0,parseFloat(mdata2[country][1][i][1]),parseFloat(mdata2[country][1][i][2]),parseFloat(mdata2[country][1][i][3])]})
+							}
+						}
+					}
+					if (tmp){
+						data.push({name:country, region:data0[country][2],subregion:data0[country][1], timedata:tmp, all:"all"})
+						if (subregion.hasOwnProperty(data0[country][2])){
+							if (subregion[data0[country][2]].indexOf(data0[country][1])==-1){
+								subregion[data0[country][2]].push(data0[country][1])
+							}
+							
+						}
+						
+						else{
+							subregion[data0[country][2]]=[];
+							subregion[data0[country][2]].push(data0[country][1])
+						}
+						
+					}
+				}
+			}
+			var l_countries={};
+			for (elem in data0){
+				if (data0.hasOwnProperty(elem)){
+					l_countries[data0[elem][0]]=elem ;
+				}
+				
+			}
+			var check_g = document.getElementById("selectGender").checked;
+			var check_y = parseInt(slider.noUiSlider.get());
+				
+			var offsetL = document.getElementById('graph-container').offsetLeft+20;
+			var offsetT = document.getElementById('graph-container').offsetTop-60;
+			
+			// start adding figure to svg here////////////////////////
+			// get range min and max of all men data
+			var range_men=[1000000000,0];
+			for (elem in data){
+				for (elem2 in data[elem]['timedata']){
+				 if(data[elem]['timedata'][elem2]['year']==check_y){
+					 
+					if (data[elem]['timedata'][elem2].hasOwnProperty('men')){
+						
+							if (data[elem]['timedata'][elem2]['men'][1]<range_men[0]){
+								range_men[0]=data[elem]['timedata'][elem2]['men'][1];
+							}
+							if (data[elem]['timedata'][elem2]['men'][1]>range_men[1]){
+								range_men[1]=data[elem]['timedata'][elem2]['men'][1];
+							}
+						
+					}
+					}
+				}
+			}
+			//console.log(range_men)
+			// get range min and max of all women data
+			var range_women=[1000000000,0];
+			for (elem in data){
+				for (elem2 in data[elem]['timedata']){
+					if(data[elem]['timedata'][elem2]['year']==check_y){
+					if (data[elem]['timedata'][elem2].hasOwnProperty('women')){
+						
+							if (data[elem]['timedata'][elem2]['women'][1]<range_women[0]){
+								range_women[0]=data[elem]['timedata'][elem2]['women'][1];
+							}
+							if (data[elem]['timedata'][elem2]['women'][0]>range_women[1]){
+								range_women[1]=data[elem]['timedata'][elem2]['women'][1];
+							}
+						
+					}
+					}
+				}
+				
+			}
+			var max_amount;
+			if (check_g==true){
+				max_amount=range_women[1];
+			}
+			else{
+				max_amount=	range_men[1];
+			}				
+			var radius_scale = d3.scale.linear().domain([0, max_amount]).range([2,  2+(Math.min(width,height)/6)]);//d3.scale.pow(1).domain([0, max_amount]).range([2, 2+(Math.min(width,height)/5)]);//d3.scale.pow(0.5).domain([0, max_amount]).range([2, 75])
+			//////////////////////////////
+			var global_nb={'men':{},'women':{}};
+			for (var i = 1975, j=2014;i<=j;i++){
+				global_nb['men'][i]=0;
+				global_nb['women'][i]=0;
+			}
+			for (var i = 0, j=data.length;i<j;i++){
+				for (var i1 = 0, j1=data[i]['timedata'].length;i1<j1;i1++){
+					global_nb['men'][data[i]['timedata'][i1]['year']]+=data[i]['timedata'][i1]['men'][1]
+					global_nb['women'][data[i]['timedata'][i1]['year']]+=data[i]['timedata'][i1]['women'][1]
+				}
+			}
+			var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);}
+			//////////////////////////////
+			//console.log(global_nb)
+			
+			//console.log(radius_scale(20000000))
+			var all_center = { "all": {name:"all", x: (width/2), y: (height/2)}};
+			var mcolor = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+			var regioncolor = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+			var region_sunburst_color = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+			var region_sunburst2_color = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+			var range_c=d3.scale.linear().domain([0.0,0.25, 0.5]).range(["green","#fee08b","red"]);//"#fee08b","red" ]);
+			var range_c2=d3.scale.linear().domain([0.0,0.5, 1.0]).range(["red","#fee08b","green"]);//"#fee08b","red" ]);
+			var range_c3=d3.scale.linear().domain([0.0,0.10, 0.2]).range(["blue","#fee08b","red"]);//"#fee08b","red" ]);
+			var range_c4=d3.scale.linear().domain([200,20000, 130000]).range(["red","#fee08b","green"]);//"#fee08b","red" ]);
+			//range_c2=d3.scale.linear().domain([0.0,0.5, 1.0]).range(["hsl(33,87%,29%)" ,"hsl(0,0%,96%)","hsl(175,98%,20%)" ]);
+			//range_c3=d3.scale.linear().domain([0.0,0.10, 0.2]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)" ]);//"#fee08b","red" ]);
+			//range_c4=d3.scale.linear().domain([0.0,30000, 130000]).range(["hsl(33,87%,29%)" ,"hsl(0,0%,96%)","hsl(175,98%,20%)" ]);
+			
+			var region = {
+				"Sub-Saharan Africa": {name:"0", x: (width*0.25), y: (height*0.25)},
+					"Central Asia, Middle East and North Africa": {name:"1", x: (width*0.25), y: (height*0.5)},
+					"South Asia": {name:"2", x: (width*0.5), y: (height*0.75)},
+					"East and South East Asia": {name:"3", x: (width*0.5), y: (height*0.5)},			
+					"High-income Asia Pacific": {name:"4", x: (width*0.75), y: (height*0.25)}, 
+					"Oceania": {name:"5", x: (width*0.25), y: (height*0.75)},
+					"Latin America and Caribbean": {name:"6", x: (width*0.5), y: (height*0.25)},
+					"High-income Western countries": {name:"7", x: (width*0.75), y: (height*0.5)}, 
+					"Central and Eastern Europe": {name:"8", x: (width*0.75), y: (height*0.75)}
+				  
+				}
+			var	listMRegions=[];
+			for (elem in region){
+				listMRegions.push(elem);
+			}	
+			
+			//var regions_nb={}
+			//for (elem in region){
+			//	regions_nb[region]=[,]
+			//}
+			//console.log(subregion)
+			//
+			
+			var dataStructure={name: "world",children:[]};
+			for (var r=0;r<listMRegions.length;r++){
+				var listsub=[];
+				for (var s=0,s1=subregion[listMRegions[r]].length;s<s1;s++){
+					
+					var tmpC=[]
+					for (var i=0,j=data.length;i<j;i++){
+						if (data[i]['region']==listMRegions[r]){
+							if (data[i]['subregion']==subregion[listMRegions[r]][s]){
+								
+								var tmply={}
+								for (var yr =0, yr2= data[i]['timedata'].length; yr<yr2;yr++){
+									tmply[years[yr]]= { men: data[i]['timedata'][yr]['men'][1],women: data[i]['timedata'][yr]['women'][1],edu: data[i]['timedata'][yr]['edu'], urb: data[i]['timedata'][yr]['urb'],gdp: data[i]['timedata'][yr]['gdp'],men_low:data[i]['timedata'][yr]['men'][2],women_low:data[i]['timedata'][yr]['women'][2],men_up:data[i]['timedata'][yr]['men'][3],women_up:data[i]['timedata'][yr]['women'][3]}
+								}
+								tmpC.push({name:data[i]['name'] ,data :tmply})
+							}
+							
+						}
+						
+					}
+					listsub.push({name:subregion[listMRegions[r]][s] ,children: tmpC})
+					
+				}
+				
+				dataStructure["children"].push({name:listMRegions[r],children:listsub});
+			}	
+			//console.log(dataStructure)
+			
+			
+			svg = d3.select("#graph-container").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			
+			
+			
+			
+			
+					
+			//d3.selectAll(".legend_edu").style("visibility","hidden");
+			
+			
+			
+			var maxRadius=0;
+			var padding_border=35;
+			for (var i=0, j=data.length;i<j;i++){
+				data[i].x=_.random(padding_border, width-padding_border);
+				data[i].y=_.random(padding_border, height-padding_border);
+				if (check_g==false){
+					if (data[i]['timedata'][parseInt(check_y)-1975]){
+					data[i].radius=radius_scale(data[i]['timedata'][parseInt(check_y)-1975]['women'][1]);
+					if (maxRadius<data[i].radius){maxRadius=data[i].radius};}
+					
+				}
+				else{
+					if(data[i]['timedata'][parseInt(check_y)-1975]){
+					data[i].radius=radius_scale(data[i]['timedata'][parseInt(check_y)-1975]['men'][1]);
+					if (maxRadius<data[i].radius){maxRadius=data[i].radius};
+					}
+				}
+				
+			}
+			var padding = 3;
+			var getCenters = function (vname, size) {
+				var centers, map;
+				centers = _.uniq(_.pluck(data, vname)).map(function (d) {
+					return {name: d, value: 1};
+				});
+
+				map = d3.layout.treemap().size(size).ratio(1/1);
+				map.nodes({children: centers});
+				return centers;
+			};
+			centers = getCenters(selectedMode, [width, height]);
+			var foci = {};
+			for (var i = 0; i < centers.length; i++) {
+			 foci[centers[i].name] = centers[i];
+			}
+			
+			var mynodes=[];
+			for (var i=0,j=data.length;i<j;i++){
+				if(selectedMode=="all"){
+					var f = foci[data[i][selectedMode]];
+					var mcx= (f.dx / 2);
+					var mcy= (f.dy / 2);
+				}
+				mynodes.push({name:data[i].name, region: data[i].region, cx: mcx , cy: mcy, radius:data[i].radius, color:mcolor(data[i].region) });
+			}
+			
+			width =640;;//width = ((window.innerWidth*0.99)-261);//document.getElementById('graph-container').offsetWidth;
+				height=width*0.45;
+				//document.getElementById('red').style.width=(width*0.66)+"px";
+				svg.attr("width", width).attr("height", height);
+			// var force = d3.layout.force()
+				// .nodes(mynodes)
+				// .size([width, height])
+				// .gravity(0)
+				// .charge(0)
+				// .on("tick", tick)
+				// .start();
+			
+			
+			
+				
+				
+
+			
+			
+			
+			// var circle = svg.selectAll("circle")
+				// .data(mynodes)
+				// .enter().append("circle")
+				// .attr("r", function(d) { return d.radius; })
+				// .style("fill", function(d) { return d.color; })
+				
+				// .on("mouseover", function (d,i) { 
+					// var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+					// d3.select(this).style("stroke-width",2);
+					// tooltip.classed("hidden", false)
+						// .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+						// .html(function(){
+							// var per = d3.format(",.2%");
+							// var gd = d3.format("$,f");
+							// var pop = d3.format(".2s");
+							// if (check_g==true){
+								// return "<b>"+d.name+" </b></br>"+d.region+"</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+							// }
+							// else{
+								// return "<b>"+d.name+" </b></br>"+d.region+"</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+							// }
+							
+						// });
+						
+				  // })
+				  // .on("mouseout", function (d) { 
+					// d3.select(this).style("stroke-width",1); 
+					// tooltip.classed("hidden", true);
+				  // });
+				  //.call(force.drag);
+			
+			
+			
+
+			
+			
+			var radius = Math.min(width, height) / 2;
+			
+			var sun_x = d3.scale.linear().range([0, 2 * Math.PI]);
+			var sun_y = d3.scale.sqrt().range([0, radius]);
+			
+			var partition = d3.layout.partition()
+				.sort(null)
+				.value(function(d) { return 1; });
+
+			var arc = d3.svg.arc()
+				.startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))); })
+				.endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))); })
+				.innerRadius(function(d) { return Math.max(0, sun_y(d.y)); })
+				.outerRadius(function(d) { return Math.max(0, sun_y(d.y + d.dy)); });
+			var sun_node;
+			
+			document.getElementById('popcenter').style.top = ($('#graph-container').position().top+(height/2))+"px";
+			document.getElementById('popcenter').style.left = ($('#graph-container').position().left+(width*0.58)-30)+"px";
+			sun_node = dataStructure;
+			var path = svg.datum(dataStructure).selectAll("path")
+				  .data(partition.nodes)
+					.enter().append("path")
+					  .attr("d", arc)
+					  .style("stroke-width", "0.5px")
+					  .style("fill", function(d) {if (listMRegions.indexOf(d.name)!=-1) {return region_sunburst_color(d.name) } else if ((d.parent) && listMRegions.indexOf((d.parent).name)!=-1){return region_sunburst_color((d.parent).name)} else if ((d.parent) &&(d.parent.parent) && listMRegions.indexOf((d.parent).parent.name)!=-1){return region_sunburst_color((d.parent).parent.name)} else {return "#ffffff"}})
+					  .attr("transform", "translate("+(width*0.58)+"," + (height/2) + ")")
+					  .on("click", click)
+					  .each(stash)
+					  .on("mouseover", function (d,i) { 
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							//console.log(d)
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  
+					  document.getElementById('per').innerHTML="&nbsp;";
+					  var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);}
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+					  
+					  
+			var value = function(d) { return d['data'][check_y]['women']; };
+
+			path
+				.data(partition.value(value).nodes)
+				.transition()
+				.duration(1000)
+				.attrTween("d", arcTweenData);
+			
+			
+			var legend_mreg = svg.append("g")
+					.attr("class", "legend_mreg")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+			
+				
+			legend_mreg.selectAll('g').data(listMRegions)
+						.enter()
+						.append('g')
+						.each(function(d, i) {
+							var g = d3.select(this);
+							g.append("rect")
+							  .attr("x", 0)
+							  .attr("y", 0+(18*i))//.attr("y", (7))//.attr("y", (7))
+							  .attr("width", 20)
+							  .attr("height", 18)
+							  .style("fill", region_sunburst2_color(d));
+							 g.append("text")
+							  .attr("x",25) 
+							  .attr("y", 15+(18*i))
+							  .attr("height",30)
+							  .attr("width",100)
+							  .style("fill", "gray").style("font-weight", "normal")//.style("font-style", "italic")
+							  .style("font-size","small")
+							  .text(d);
+						});
+			
+			
+			
+			
+			function click(d) {
+				sun_node = d;
+				path.transition()
+				  .duration(1000)
+				  .attrTween("d", arcTweenZoom(d));
+			}
+			
+			// Setup for switching data: stash the old values for transition.
+			function stash(d) {
+			  d.x0 = d.x;
+			  d.dx0 = d.dx;
+			}
+
+			// When switching data: interpolate the arcs in data space.
+			function arcTweenData(a, i) {
+			  var oi = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+			  function tween(t) {
+				var b = oi(t);
+				a.x0 = b.x;
+				a.dx0 = b.dx;
+				return arc(b);
+			  }
+			  if (i == 0) {
+			   // If we are on the first arc, adjust the x domain to match the root node
+			   // at the current zoom level. (We only need to do this once.)
+				var xd = d3.interpolate(sun_x.domain(), [sun_node.x, sun_node.x + sun_node.dx]);
+				return function(t) {
+				  sun_x.domain(xd(t));
+				  return tween(t);
+				};
+			  } else {
+				return tween;
+			  }
+			}
+
+			// When zooming: interpolate the scales.
+			function arcTweenZoom(d) {
+				var xd = d3.interpolate(sun_x.domain(), [d.x, d.x + d.dx]),
+					yd = d3.interpolate(sun_y.domain(), [d.y, 1]);
+				var inflate;
+				if (d['name']=="world"){
+					inflate=0;
+				}
+
+				else{
+					inflate=60;
+				}
+				var yr = d3.interpolate(sun_y.range(), [inflate, radius]);
+				return function(d, i) {
+				return i
+					? function(t) { return arc(d); }
+					: function(t) { sun_x.domain(xd(t)); sun_y.domain(yd(t)).range(yr(t)); return arc(d); };
+				};
+			}
+			
+			
+			
+			
+			
+			
+			//updateWindow();
+
+
+
+			$( ".bbt" ).click(function() {
+				var check_y = parseInt(slider.noUiSlider.get());
+				var check_g = document.getElementById("selectGender").checked;
+				var check_gr = document.getElementById("selectColor").checked;
+				selectedMode=this.id;	
+				updateWindow();
+				foci=[]
+				centers = getCenters(selectedMode, [width, height-35]);
+				for (var i = 0; i < centers.length; i++) {
+				 foci[centers[i].name] = centers[i];
+				}
+				//console.log(foci)
+				
+				maxRadius=0;
+				padding_border=35;
+				for (var i=0, j=data.length;i<j;i++){
+					data[i].x=_.random(padding_border, width-padding_border);
+					data[i].y=_.random(padding_border, height-padding_border);
+					if (check_g==false){
+						if (data[i]['timedata'][parseInt(check_y)-1975]){
+						data[i].radius=radius_scale(data[i]['timedata'][parseInt(check_y)-1975]['women'][1]);
+						if (maxRadius<data[i].radius){maxRadius=data[i].radius};}
+						
+					}
+					else{
+						if(data[i]['timedata'][parseInt(check_y)-1975]){
+						data[i].radius=radius_scale(data[i]['timedata'][parseInt(check_y)-1975]['men'][1]);
+						if (maxRadius<data[i].radius){maxRadius=data[i].radius};
+						}
+					}
+					
+				}
+				
+				for (var i=0,j=data.length;i<j;i++){
+					var mcx;
+					var mcy;
+					if(selectedMode=="all"){
+						var f = foci[data[i][selectedMode]];
+						mcx= (f.dx / 2);
+						mcy= (f.dy / 2);
+					}
+					
+					if(selectedMode!="all"){
+						var f = foci[mynodes[i]["region"]];
+						mcx = f.x+(f.dx/2);
+						mcy = f.y+(f.dy/2);
+					}
+					
+					mynodes[i]['cx']=mcx ; 
+					mynodes[i]['cy']=mcy;
+					mynodes[i]['radius']=data[i].radius;
+					
+				}
+				
+				if(selectedMode!="all"){
+					svg.selectAll("rect").remove();
+					svg.selectAll("text").remove();
+					//reg_nodes.delete();
+					var reg_nodes = svg.selectAll("rect").data(centers);
+					
+					reg_nodes.enter().append("rect")
+						.attr("class", "node")
+						.attr("x", function (d) { return d.x; })
+						.attr("y", function (d) { return d.y+35; })
+						.attr("width", function (d) { return (d.dx); })
+						.attr("height", function (d) { return (d.dy); })
+						.style("stroke", function (d,i) { return "#000000"; })
+						.style("fill", function (d,i) { return "#ffffff"; })
+						.style("opacity", function (d) { return 0.0; })
+						.attr("class", "behind");
+					d3.selectAll("rect").transition().duration(200).style("opacity", function (d) { return 0.1; });
+					
+					var reg_nodes = svg.selectAll("text").data(centers);
+					reg_nodes.enter().append("text")
+						.text(function (d,i) { if((d.name.length*5.5 )> d.dx)
+													return d.name.substring(0,(parseInt(d.dx/5.5 )))+'...';
+											   else
+													return d.name; return d.name; })
+						.attr("x", function (d) { return d.x; })
+						.attr("y", function (d) { return d.y+35; })
+						.attr("dy", function (d) { return 15; })
+						.attr('fill', 'black')
+						.attr('font-size','10px') 
+						.style("opacity", function (d) { return 0.0; })
+						.attr("class", "behind");
+					d3.selectAll("text").transition().duration(200).style("opacity", function (d) { return 1.0; });
+				}
+				else{
+					
+				
+					d3.selectAll("rect").transition().duration(200).style("opacity", function (d) { return 0.0; });
+					d3.selectAll("text").transition().duration(200).style("opacity", function (d) { return 0.0; });
+				}
+				
+				
+				if(selectedColorMode=="c1"){
+					
+					
+						legend_mreg.remove();
+						legend_mreg = svg.append("g")
+						.attr("class", "legend_mreg")
+						.attr("x", 0)
+						.attr("y", 25)
+						.attr("height", 100)
+						.attr("width", 100);
+				
+				
+						//console.log(listMRegions)
+						legend_mreg.selectAll('g').data(listMRegions)
+						.enter()
+						.append('g')
+						.each(function(d, i) {
+							var g = d3.select(this);
+							var myx =(width*0.29)-150;
+							var myy =20;
+							
+							myx =(width*0.55)-100
+							myy =10;
+							g.append("rect")
+							  .attr("x", (width *0.25)+((width *0.5)*0.111111*i))
+							  .attr("y", (7))//.attr("y", (7))
+							  .attr("width", (width *0.5)*0.111111)
+							  .attr("height", 10)
+							  .style("fill", regioncolor(d))	
+								.on("mouseover", function () { 
+								
+								var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+								//d3.select(this).style("stroke-width",20);
+								tooltip.classed("hidden", false)
+									.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+($('#graph-container').position().top+35)+"px")
+									.html(function(){
+										return d
+										
+									});
+									
+							  })
+							  .on("mouseout", function () { 
+								//d3.select(this).style("stroke-width",1); 
+								tooltip.classed("hidden", true);
+							  });
+							
+
+						});
+					
+					d3.selectAll(".legend_mreg").style("visibility","visible");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c2"){
+					
+					
+					legend_edu.remove();
+					legend_edu = svg.append("g")
+					.attr("class", "legend_edu")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_edu.selectAll('g').data(["education"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c2gradient);	
+						
+						g.append("text")
+						  .attr("x",(width *0.25)-5) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("0%");
+						 g.append("text")
+						  .attr("x",(width *0.75)-15) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("100%");
+
+					});
+					
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","visible");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c3"){
+					
+					legend_urb.remove();
+					legend_urb = svg.append("g")
+					.attr("class", "legend_urb")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_urb.selectAll('g').data(["urbanisation"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c3gradient);	
+						//g.append("text")
+						//  .attr("x",(width *0.25)-70) 
+						//  .attr("y", 15)
+						//  .attr("height",30)
+						//  .attr("width",100)
+						//  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						//  .style("font-size","small")
+						//  .text(d);
+						g.append("text")
+						  .attr("x",(width *0.25)-7) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("0%");
+						g.append("text")
+						  .attr("x",(width *0.5)-10) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("10%");  
+						g.append("text")
+						  .attr("x",(width *0.75)-10) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("20%");
+
+					});
+							
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","visible");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c4"){
+					
+					legend_gdp.remove();
+					legend_gdp = svg.append("g")
+					.attr("class", "legend_gdp")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_gdp.selectAll('g').data(["gdp"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c4gradient);	
+						//g.append("text")
+						//  .attr("x",(width *0.25)-70) 
+						//  .attr("y", 15)
+						//  .attr("height",30)
+						//  .attr("width",100)
+						//  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						//  .style("font-size","small")
+						//  .text(d);
+						g.append("text")
+						  .attr("x",(width *0.25)-17) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$200");
+						g.append("text")
+						  .attr("x",(width *0.5)-22) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$20,000");  
+						g.append("text")
+						  .attr("x",(width *0.75)-30) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$130,000");
+
+					});
+					
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","visible");
+				}
+				
+				
+				
+				//force.resume();
+			});	
+			
+			
+			$( ".bbt2" ).click(function() {
+				selectedColorMode=this.id;	
+				//console.log(selectedColorMode)
+				if(selectedColorMode=="c1"){
+					circle.transition().duration(0).style("fill", function (d,i) {return mcolor(d.region);});
+					
+						legend_mreg.remove();
+						legend_mreg = svg.append("g")
+						.attr("class", "legend_mreg")
+						.attr("x", 0)
+						.attr("y", 25)
+						.attr("height", 100)
+						.attr("width", 100);
+				
+				
+						//console.log(listMRegions)
+						legend_mreg.selectAll('g').data(listMRegions)
+						.enter()
+						.append('g')
+						.each(function(d, i) {
+							var g = d3.select(this);
+							var myx =(width*0.29)-150;
+							var myy =20;
+							
+							myx =(width*0.55)-100
+							myy =10;
+							g.append("rect")
+							  .attr("x", (width *0.25)+((width *0.5)*0.111111*i))
+							  .attr("y", (7))//.attr("y", (7))
+							  .attr("width", (width *0.5)*0.111111)
+							  .attr("height", 10)
+							  .style("fill", regioncolor(d))	
+								.on("mouseover", function () { 
+								var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+								//d3.select(this).style("stroke-width",20);
+								tooltip.classed("hidden", false)
+									.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+($('#graph-container').position().top+35)+"px")
+									.html(function(){
+										return d
+										
+									});
+									
+							  })
+							  .on("mouseout", function () { 
+								//d3.select(this).style("stroke-width",1); 
+								tooltip.classed("hidden", true);
+							  });
+							
+
+						});
+					
+					d3.selectAll(".legend_mreg").style("visibility","visible");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c2"){
+					circle.transition().duration(0).style("fill", function (d,i) {return range_c2(data[i]['timedata'][parseInt(check_y)-1975]['edu']);});
+					
+					legend_edu.remove();
+					legend_edu = svg.append("g")
+					.attr("class", "legend_edu")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_edu.selectAll('g').data(["education"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c2gradient);	
+						
+						g.append("text")
+						  .attr("x",(width *0.25)-5) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("0%");
+						 g.append("text")
+						  .attr("x",(width *0.75)-15) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("100%");
+
+					});
+					
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","visible");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c3"){
+					circle.transition().duration(0).style("fill", function (d,i) {return range_c3((data[i]['timedata'][parseInt(check_y)-1975]['urb']/100));});
+					legend_urb.remove();
+					legend_urb = svg.append("g")
+					.attr("class", "legend_urb")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_urb.selectAll('g').data(["urbanisation"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c3gradient);	
+						//g.append("text")
+						//  .attr("x",(width *0.25)-70) 
+						//  .attr("y", 15)
+						//  .attr("height",30)
+						//  .attr("width",100)
+						//  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						//  .style("font-size","small")
+						//  .text(d);
+						g.append("text")
+						  .attr("x",(width *0.25)-7) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("0%");
+						g.append("text")
+						  .attr("x",(width *0.5)-10) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("10%");  
+						g.append("text")
+						  .attr("x",(width *0.75)-10) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("20%");
+
+					});
+							
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","visible");
+					d3.selectAll(".legend_gdp").style("visibility","hidden");
+				}
+				else if(selectedColorMode=="c4"){
+					circle.transition().duration(0).style("fill", function (d,i) {return range_c4(data[i]['timedata'][parseInt(check_y)-1975]['gdp']);});
+					legend_gdp.remove();
+					legend_gdp = svg.append("g")
+					.attr("class", "legend_gdp")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+					legend_gdp.selectAll('g').data(["gdp"])
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						var myx =(width*0.29)-150;
+						var myy =20;
+						
+						myx =(width*0.55)-100
+						myy =10;
+						g.append("rect")
+						  .attr("x", (width *0.25))
+						  .attr("y", (7))//.attr("y", (7))
+						  .attr("width", (width *0.5))
+						  .attr("height", 10)
+						  .style("fill", c4gradient);	
+						//g.append("text")
+						//  .attr("x",(width *0.25)-70) 
+						//  .attr("y", 15)
+						//  .attr("height",30)
+						//  .attr("width",100)
+						//  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						//  .style("font-size","small")
+						//  .text(d);
+						g.append("text")
+						  .attr("x",(width *0.25)-17) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$200");
+						g.append("text")
+						  .attr("x",(width *0.5)-22) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$20,000");  
+						g.append("text")
+						  .attr("x",(width *0.75)-30) 
+						  .attr("y", 30)
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "bold")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text("$130,000");
+
+					});
+					
+					d3.selectAll(".legend_mreg").style("visibility","hidden");
+					d3.selectAll(".legend_edu").style("visibility","hidden");
+					d3.selectAll(".legend_urb").style("visibility","hidden");
+					d3.selectAll(".legend_gdp").style("visibility","visible");
+				}
+			});
+
+
+
+			
+			function tick(e) {
+				var k = 0.09;
+				mynodes.forEach(function(o, i) {
+					var my_x; 
+					var my_y;
+					if(selectedMode!="all"){
+						var f = foci[o["region"]];
+						my_x = f.x+(f.dx/2);
+						my_y = f.y+(f.dy/2)+35;
+						o.y += (my_y - o.y) * (0.4) * k;
+						o.x += (my_x - o.x) * (0.4) * k;
+					}
+					
+				});
+				
+				
+						
+				if(selectedMode=="all"){
+					padding=3;
+					circle.data(mynodes)
+					.each(gravity(.07 * e.alpha))
+					.each(collide(.45))
+					.attr("cx", function(d) { return d.x; })
+					.attr("cy", function(d) { return d.y; });
+				}	
+				else{
+					padding=3;
+					circle.data(mynodes)
+					//.each(gravity(.0007 * e.alpha))
+					.each(collide(.45))
+					.attr("cx", function(d) { return d.x; })
+					.attr("cy", function(d) { return d.y; });
+				}
+					
+				
+			}
+			// Move nodes toward cluster focus.
+			function gravity(alpha) {
+				return function(d) {
+					d.y += (d.cy - d.y) * alpha;
+					d.x += (d.cx - d.x) * alpha;
+				};
+			}
+			// Resolve collisions between nodes.
+			function collide(alpha) {
+			  var quadtree = d3.geom.quadtree(mynodes);
+			  return function(d) {
+				var r = d.radius + maxRadius + padding,
+					nx1 = d.x - r,
+					nx2 = d.x + r,
+					ny1 = d.y - r,
+					ny2 = d.y + r;
+				quadtree.visit(function(quad, x1, y1, x2, y2) {
+				  if (quad.point && (quad.point !== d)) {
+					var x = d.x - quad.point.x,
+						y = d.y - quad.point.y,
+						l = Math.sqrt(x * x + y * y),
+						r = d.radius + quad.point.radius + padding;//(d.color !== quad.point.color) * padding;
+					if (l < r) {
+					  l = (l - r) / l *0.3;//*(alpha*1.1);// alpha;//*0.9;
+					  d.x -= x *= l;
+					  d.y -= y *= l;
+					  quad.point.x += x;
+					  quad.point.y += y;
+					}
+				  }
+				  return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+				});
+			  };
+			}
+				
+			//////////////////////////////////////////////////////////
+				
+			d3.select("#selectGender").on("change", function() {
+				var check_y = parseInt(slider.noUiSlider.get());
+				var check_g = this.checked;
+				var check_gr = document.getElementById("selectColor").checked;
+				if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);}
+				//if (check_gr==false){
+				
+					if (check_g==true){
+						value = function(d) { return d['data'][check_y]['men']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(1000)
+							.attrTween("d", arcTweenData);
+						path.on("mouseover", function (d,i) { 
+							document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+						
+					}
+					else{
+						value = function(d) { return d['data'][check_y]['women']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(1000)
+							.attrTween("d", arcTweenData);
+								
+						path.on("mouseover", function (d,i) { 
+							document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+						document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+					}
+				
+				// circle.on("mouseover", function (d,i) { 
+							// var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							// d3.select(this).style("stroke-width",2);
+							// tooltip.classed("hidden", false)
+								// .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+								// .html(function(){
+									// var per = d3.format(",.2%");
+									// var gd = d3.format("$,f");
+									// var pop = d3.format(".2s");
+									// if (check_g==true){
+										// return "<b>"+d.name+" </b></br>"+d.region+"</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									// }
+									// else{
+										// return "<b>"+d.name+" </b></br>"+d.region+"</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									// }
+									
+								// });
+								
+						  // })
+						  // .on("mouseout", function (d) { 
+							// d3.select(this).style("stroke-width",1); 
+							// tooltip.classed("hidden", true);
+						  // });
+						//force.charge(0.7)
+						//force.resume();
+				
+				
+			});
+				
+			d3.select("#selectColor").on("change", function() { 
+				//console.log(document.getElementById("selectColor").checked)
+				var check_y = parseInt(slider.noUiSlider.get());
+				var check_g = document.getElementById("selectGender").checked;
+				var check_gr = document.getElementById("selectColor").checked
+				if (check_gr==false){
+					c2gradient="url(#gradient1)";
+					c3gradient="url(#gradient2)";
+					c4gradient="url(#gradient1)";
+					mcolor = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+					regioncolor = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+					range_c2=d3.scale.linear().domain([0.0,0.5, 1.0]).range(["red","#fee08b","green"]);
+					range_c3=d3.scale.linear().domain([0.0,0.10, 0.2]).range(["blue","#fee08b","red"]);//"#fee08b","red" ]);
+					range_c4=d3.scale.linear().domain([0.0,20000, 130000]).range(["red","#fee08b","green"]);
+					region_sunburst_color = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+					region_sunburst2_color = d3.scale.ordinal().domain(d3.range(9)).range(['#f69999' , '#e31e26', '#fdbf6e', '#f58022', '#b05828', '#6a3f97', '#2da147', '#a6cfe4' , '#1779b3']);
+				}
+				else{
+				
+					c2gradient="url(#gradient1b)";
+					c3gradient="url(#gradient2b)";
+					c4gradient="url(#gradient1b)";
+					regioncolor = d3.scale.ordinal().domain(d3.range(9)).range(['#8b0000','#c9314f','#ef738b','#ffb9bb','#ffffe0','#b1e6ae','#7ac696','#49a289','#008080']);
+					mcolor = d3.scale.ordinal().domain(d3.range(9)).range(['#8b0000','#c9314f','#ef738b','#ffb9bb','#ffffe0','#b1e6ae','#7ac696','#49a289','#008080']);
+					range_c2=d3.scale.linear().domain([0.0,0.5, 1.0]).range(["hsl(33,87%,29%)" ,"hsl(0,0%,96%)","hsl(175,98%,20%)" ]);
+					range_c3=d3.scale.linear().domain([0.0,0.10, 0.2]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)" ]);//"#fee08b","red" ]);
+					range_c4=d3.scale.linear().domain([200,20000, 130000]).range(["hsl(33,87%,29%)" ,"hsl(0,0%,96%)","hsl(175,98%,20%)" ]);
+					region_sunburst_color=d3.scale.ordinal().domain(d3.range(9)).range(['#8b0000','#c9314f','#ef738b','#ffb9bb','#e5e600','#b1e6ae','#7ac696','#49a289','#008080']);
+					region_sunburst2_color=d3.scale.ordinal().domain(d3.range(9)).range(['#8b0000','#c9314f','#ef738b','#ffb9bb','#e5e600','#b1e6ae','#7ac696','#49a289','#008080']);
+					//
+					
+					
+					
+				}
+				
+				updateWindow();
+				
+			});
+				
+			var pauseValues = {
+			  lastT: 1975,
+			  currentT: 1975
+			};
+			
+			d3.select("#playpause").on("click", function() {
+					if (document.getElementById('playpause').className=='pause'){
+						document.getElementById('playpause').className='play';
+					}
+					else{
+						
+						if (parseInt(slider.noUiSlider.get())==2014){
+							pauseValues.currentT=1975;
+							slider.noUiSlider.set(1975);
+							
+						}
+						document.getElementById('playpause').className='pause';
+						pauseValues.currentT = parseInt(slider.noUiSlider.get());
+						one_step();
+					}
+				});
+				
+				function one_step(){
+					if((pauseValues.currentT<2014) && (document.getElementById('playpause').className=='pause') ){
+						setTimeout(function(){
+							
+							pauseValues.currentT++;
+							slider.noUiSlider.set(parseInt(pauseValues.currentT));
+							one_step();stepvalue();
+							if (pauseValues.currentT>2014){d3.select('#playpause').attr('class','play');}
+							}, 200)
+					}
+					else{
+						document.getElementById('playpause').className='play';
+					}
+					
+						
+					
+				}
+				
+				if (document.getElementById('playpause').className=='pause'){
+						document.getElementById('playpause').className='play';
+					}
+				
+			function stepvalue(){
+				
+				var check_y = parseInt(slider.noUiSlider.get());;
+				d3.select('#slidertext').text(parseInt(slider.noUiSlider.get()));
+				var check_g = document.getElementById("selectGender").checked;
+				var check_gr = document.getElementById("selectColor").checked;
+				if (check_g==true){
+					value = function(d) { return d['data'][check_y]['men']; };
+
+					path
+						.data(partition.value(value).nodes)
+						.transition()
+						.duration(200)
+						.attrTween("d", arcTweenData);
+					path.on("mouseover", function (d,i) { 
+					document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+						var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+						d3.select(this).style("stroke-width",2.5);
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", false)
+						.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+						.html(function(){
+							var per = d3.format(",.2%");
+							var gd = d3.format("$,f");
+							var pop = d3.format(".2s");
+							if (!(d.children)){
+								if (check_g==true){
+									document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+								}
+								else{
+									document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+								}
+							}
+							else{
+								if (check_g==true){
+									return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+								}
+								else{
+									return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+								}
+							}
+							
+						});
+						
+				  })
+				  .on("mouseout", function (d) { 
+				  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+					d3.select(this).style("stroke-width",1); 
+					d3.select(this).style("stroke","#ffffff");
+					tooltip.classed("hidden", true);
+				  });
+					
+				}
+				else{
+					value = function(d) { return d['data'][check_y]['women']; };
+
+					path
+						.data(partition.value(value).nodes)
+						.transition()
+						.duration(200)
+						.attrTween("d", arcTweenData);
+							
+					path.on("mouseover", function (d,i) { 
+					document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+						var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+						d3.select(this).style("stroke-width",2.5);
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", false)
+						.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+						.html(function(){
+							var per = d3.format(",.2%");
+							var gd = d3.format("$,f");
+							var pop = d3.format(".2s");
+							if (!(d.children)){
+								if (check_g==true){
+									document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+								}
+								else{
+									document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+								}
+							}
+							else{
+								if (check_g==true){
+									return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+								}
+								else{
+									return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+								}
+							}
+							
+						});
+						
+				  })
+				  .on("mouseout", function (d) { 
+				  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+					d3.select(this).style("stroke-width",1); 
+					d3.select(this).style("stroke","#ffffff");
+					tooltip.classed("hidden", true);
+				  });
+				}
+					
+				
+			}
+				
+			//console.log(d3.select("#red"))
+			//$( "#red" ).slider().on("slide", function (e, ui) {	
+			slider.noUiSlider.on('update', function(){				
+				d3.select('#slidertext').text(parseInt(this.get()));
+				var check_y = parseInt(this.get());
+				pauseValues.currentT = parseInt(this.get());
+				var check_g = document.getElementById("selectGender").checked;
+				var check_gr = document.getElementById("selectColor").checked;
+				// if (check_gr==false){
+				if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);}
+				
+				
+				
+				
+					if (check_g==true){
+						value = function(d) { return d['data'][check_y]['men']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(1000)
+							.attrTween("d", arcTweenData);
+						path.on("mouseover", function (d,i) { 
+						document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+						
+					}
+					else{
+						value = function(d) { return d['data'][check_y]['women']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(1000)
+							.attrTween("d", arcTweenData);
+								
+						path.on("mouseover", function (d,i) { 
+						document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+					}
+				
+			});
+				
+				
+			// resise window	
+			window.onresize = updateWindow;
+			
+			function updateWindow(){
+				//x = w.innerWidth || e.clientWidth || g.clientWidth;
+				//y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+				//console.log($('#graph-container').position().top)
+				width =640//width = ((window.innerWidth*0.99)-261);//document.getElementById('graph-container').offsetWidth;
+				height=width*0.45;
+				svg.attr("width", width).attr("height", height);
+				
+				document.getElementById('popcenter').style.top = ($('#graph-container').position().top+(height/2))+"px";
+				document.getElementById('popcenter').style.left = ($('#graph-container').position().left+(width*0.58)-30)+"px";
+				
+				
+				//document.getElementById('red').style.width=(width*0.66)+"px";
+				radius_scale = radius_scale = d3.scale.linear().domain([0, max_amount]).range([2,  2+(Math.min(width,height)/6)]);//d3.scale.pow(3).domain([0, max_amount]).range([2, 2+(Math.min(width,height)/30)]);
+				all_center = { "all": {name:"all", x: (width/2), y: (height/2)}};
+				
+				
+				var check_y = parseInt(slider.noUiSlider.get());;
+				d3.select('#slidertext').text(parseInt(slider.noUiSlider.get()));
+				var check_g = document.getElementById("selectGender").checked;
+				var check_gr = document.getElementById("selectColor").checked;
+				radius = Math.min(width, height) / 2;
+			
+				sun_x = d3.scale.linear().range([0, 2 * Math.PI]);
+				sun_y = d3.scale.sqrt().range([0, radius]);
+			
+				partition = d3.layout.partition()
+				.sort(null)
+				.value(function(d) { return 1; });
+
+				arc = d3.svg.arc()
+				.startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))); })
+				.endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))); })
+				.innerRadius(function(d) { return Math.max(0, sun_y(d.y)); })
+				.outerRadius(function(d) { return Math.max(0, sun_y(d.y + d.dy)); });
+			
+				sun_node = dataStructure;
+				path.remove();
+				path = svg.datum(dataStructure).selectAll("path")
+					.data(partition.nodes)
+					.enter().append("path")
+					  .attr("d", arc)
+					  .style("stroke-width", "0.5px")
+					  .style("fill", function(d) {if (listMRegions.indexOf(d.name)!=-1) {return region_sunburst_color(d.name) } else if ((d.parent) && listMRegions.indexOf((d.parent).name)!=-1){return region_sunburst_color((d.parent).name)} else if ((d.parent) &&(d.parent.parent) && listMRegions.indexOf((d.parent).parent.name)!=-1){return region_sunburst_color((d.parent).parent.name)} else {return "#ffffff"}})
+					  .attr("transform", "translate("+(width*0.58)+"," + (height/2) + ")")
+					  .on("click", click)
+					  .each(stash)
+					  .on("mouseover", function (d,i) { 
+					  document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+				
+				
+					if (check_g==true){
+						value = function(d) { return d['data'][check_y]['men']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(0)
+							.attrTween("d", arcTweenData);
+						path.on("mouseover", function (d,i) { 
+						document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					  document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+						
+					}
+					else{
+						value = function(d) { return d['data'][check_y]['women']; };
+
+						path
+							.data(partition.value(value).nodes)
+							.transition()
+							.duration(0)
+							.attrTween("d", arcTweenData);
+								
+						path.on("mouseover", function (d,i) { 
+						document.getElementById('per').innerHTML=""+d.name+" &nbsp;&nbsp;&nbsp;"+formatPer(Math.abs(((Math.max(0, Math.min(2 * Math.PI, sun_x(d.x))) - Math.max(0, Math.min(2 * Math.PI, sun_x(d.x + d.dx))))/(2*Math.PI))));
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							d3.select(this).style("stroke-width",2.5);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", false)
+							.attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+$('#graph-container').position().top-20)+"px")
+							.html(function(){
+								var per = d3.format(",.2%");
+								var gd = d3.format("$,f");
+								var pop = d3.format(".2s");
+								if (!(d.children)){
+									if (check_g==true){
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['men']);return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['men'])+"</b> ("+pop(d['data'][check_y]['men_low'])+"-"+pop(d['data'][check_y]['men_up'])+")"
+									}
+									else{
+										document.getElementById('popcenter').innerHTML=""+pop(d['data'][check_y]['women']); return "<b>"+d.name+" </b></br>number of obese people<br> <b>"+pop(d['data'][check_y]['women'])+"</b> ("+pop(d['data'][check_y]['women_low'])+"-"+pop(d['data'][check_y]['women_up'])+")"
+									}
+								}
+								else{
+									if (check_g==true){
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['women'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+									else{
+										return "<b>"+d.name+" </b>";//</br>number of obese people "+pop(data[i]['timedata'][parseInt(check_y)-1975]['men'][1])+"</br>education "+per(data[i]['timedata'][parseInt(check_y)-1975]['edu'])+"</br>urbanisation "+parseFloat(data[i]['timedata'][parseInt(check_y)-1975]['urb']).toFixed(2)+"%</br>gdp "+gd(data[i]['timedata'][parseInt(check_y)-1975]['gdp'])
+									}
+								}
+								
+							});
+							
+					  })
+					  .on("mouseout", function (d) { 
+					   document.getElementById('per').innerHTML="&nbsp;";var pop = d3.format(".2s");if (check_g==true){document.getElementById('popcenter').innerHTML=pop(global_nb['men'][check_y]);}else{document.getElementById('popcenter').innerHTML=pop(global_nb['women'][check_y]);};
+						d3.select(this).style("stroke-width",1); 
+						d3.select(this).style("stroke","#ffffff");
+						tooltip.classed("hidden", true);
+					  });
+					}
+					
+				legend_mreg.remove();	
+				legend_mreg = svg.append("g")
+					.attr("class", "legend_mreg")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+			
+			
+				legend_mreg.selectAll('g').data(listMRegions)
+					.enter()
+					.append('g')
+					.each(function(d, i) {
+						var g = d3.select(this);
+						g.append("rect")
+						  .attr("x", 0)
+						  .attr("y", 7+(18*i))//.attr("y", (7))//.attr("y", (7))
+						  .attr("width", 20)
+						  .attr("height", 18)
+						  .style("fill", region_sunburst2_color(d));
+						 g.append("text")
+						  .attr("x",25) 
+						  .attr("y", 22+(18*i))
+						  .attr("height",30)
+						  .attr("width",100)
+						  .style("fill", "gray").style("font-weight", "normal")//.style("font-style", "italic")
+						  .style("font-size","small")
+						  .text(d);
+					});
+				
+				
+			}
+				
+				
+				
+				
+				
+		});	
+	});
+});
+	
+
+
+
+
+//function playpause() {
+	
+//}
+
+
+function move() {
+
+  var t = d3.event.translate;
+  var s = d3.event.scale; 
+  zscale = s;
+  var h = height/4;
+
+
+  t[0] = Math.min(
+    (width/height)  * (s - 1), 
+    Math.max( width * (1 - s), t[0] )
+  );
+
+  t[1] = Math.min(
+    h * (s - 1) + h * s, 
+    Math.max(height  * (1 - s) - h * s, t[1])
+  );
+
+  zoom.translate(t);
+  //mg.attr("transform", "translate(" + t + ")scale(" + s + ")");
+	scalezoom=s;
+  //adjust the country hover stroke width based on zoom level
+ // d3.selectAll(".country").style("stroke-width", function (d,i) {if(i==highlightedcountry) {return (1.3/s)} else {return (0.3/s)}});
+
+}
+
+
+
+
+</script>
+
+    </body>
+</html>

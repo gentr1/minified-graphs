@@ -1,0 +1,2393 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Adiposity > Data Visualisations > NCD-RisC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme-chipotle.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/3d-ncd.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600,700" rel="stylesheet" type="text/css">
+        <link href="css/font-opensans.css" rel="stylesheet" type="text/css">
+		<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/nouislider.min.css" />
+		
+		<style>
+		.mys{
+			-webkit-appearance: none;
+			transform: translate(0px, 9px);
+			font-size: 16px;
+			font-weight: normal;
+			color:#6f828e;
+			font-size: 11px;
+			border-radius: 0;
+			z-index: 1000;
+			//border: none;
+			border: 1px solid #DDDDDD;
+			background: transparent;
+			//width: 380px;
+			//overflow: hidden;
+			padding-top: 0px;
+			//height: 70px;
+			//text-indent: 10px;
+			//color: #ffffff;
+			
+		}
+		
+		
+		.switch2 {
+			position: relative;
+			display: block;
+			vertical-align: top;
+			width: 100px;
+			height: 28px;
+			padding: 0px;
+			margin: 0 0px 0px 0;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+			border-radius: 0px;
+			box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+		}
+		.switch2-input {
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+		.switch2-label {
+			position: relative;
+			display: block;
+			height: inherit;
+			font-size: 10px;
+			//text-transform: uppercase;
+			background: #eceeef;
+			border-radius: inherit;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+		}
+		.switch2-label:before, .switch2-label:after {
+			position: absolute;
+			top: 50%;
+			margin-top: -.5em;
+			line-height: 1;
+			-webkit-transition: inherit;
+			-moz-transition: inherit;
+			-o-transition: inherit;
+			transition: inherit;
+		}
+		.switch2-label:before {
+			content: attr(data-off);
+			right: 11px;
+			color: #aaaaaa;
+			text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+		}
+		.switch2-label:after {
+			content: attr(data-on);
+			left: 11px;
+			color: #FFFFFF;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+			opacity: 0;
+		}
+		.switch2-input:checked ~ .switch2-label {
+			background: #E1B42B;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+		}
+		.switch2-input:checked ~ .switch2-label:before {
+			opacity: 0;
+		}
+		.switch2-input:checked ~ .switch2-label:after {
+			opacity: 1;
+		}
+		.switch2-handle {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			width: 28px;
+			height: 28px;
+			background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+			background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+			border-radius: 100%;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		.switch2-handle:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -6px 0 0 -6px;
+			width: 12px;
+			height: 12px;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+			border-radius: 6px;
+			box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+		}
+		.switch2-input:checked ~ .switch2-handle {
+			left: 74px;
+			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		 
+		/* Transition
+		========================== */
+		.switch2-label, .switch2-handle {
+			transition: All 0.3s ease;
+			-webkit-transition: All 0.3s ease;
+			-moz-transition: All 0.3s ease;
+			-o-transition: All 0.3s ease;
+		}
+
+		.switch-slide2 {
+			padding: 0;
+			margin: 3px 3px 3px 3px;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-slide2 .switch2-label {
+			box-shadow: none;
+			background: none;
+			overflow: hidden;
+		}
+		.switch-slide2 .switch2-label:after, .switch-slide2 .switch2-label:before {
+			width: 100%;
+			height: 100%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-slide2 .switch2-label:after {
+			color: #000000;
+			//background: #87CEEB;
+			background: #A9F5A9;//#eceeef;
+			left: -100px;
+		}
+		.switch-slide2 .switch2-label:before {
+			background: #eceeef;
+		}
+		.switch-slide2 .switch2-handle {
+			display: none;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label:before {
+			left: 100px;
+		}
+		.switch-slide2 .switch2-input:checked ~ .switch2-label:after {
+			left: 0;
+		}
+
+
+
+
+
+
+		.switch {
+			position: relative;
+			display: block;
+			vertical-align: top;
+			width: 80px;
+			height: 28px;
+			padding: 0px;
+			margin: 0 0px 0px 0;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+			border-radius: 0px;
+			box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+		}
+		.switch-input {
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+		.switch-label {
+			position: relative;
+			display: block;
+			height: inherit;
+			font-size: 12px;
+			//text-transform: uppercase;
+			background: #eceeef;
+			border-radius: inherit;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+		}
+		.switch-label:before, .switch-label:after {
+			position: absolute;
+			top: 50%;
+			margin-top: -.5em;
+			line-height: 1;
+			-webkit-transition: inherit;
+			-moz-transition: inherit;
+			-o-transition: inherit;
+			transition: inherit;
+		}
+		.switch-label:before {
+			content: attr(data-off);
+			right: 11px;
+			color: #000000;
+			text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+		}
+		.switch-label:after {
+			content: attr(data-on);
+			left: 11px;
+			color: #000000;
+			text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+			opacity: 0;
+		}
+		.switch-input:checked ~ .switch-label {
+			background: #E1B42B;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+		}
+		.switch-input:checked ~ .switch-label:before {
+			opacity: 0;
+		}
+		.switch-input:checked ~ .switch-label:after {
+			opacity: 1;
+		}
+		.switch-handle {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			width: 28px;
+			height: 28px;
+			background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+			background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+			border-radius: 100%;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		.switch-handle:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -6px 0 0 -6px;
+			width: 12px;
+			height: 12px;
+			background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+			background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+			border-radius: 6px;
+			box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+		}
+		.switch-input:checked ~ .switch-handle {
+			left: 74px;
+			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+		}
+		 
+		/* Transition
+		========================== */
+		.switch-label, .switch-handle {
+			transition: All 0.3s ease;
+			-webkit-transition: All 0.3s ease;
+			-moz-transition: All 0.3s ease;
+			-o-transition: All 0.3s ease;
+		}
+
+
+		.switch-yes-no {
+			padding: 0;
+			margin: 15px 0 0;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-yes-no .switch-label {
+			box-shadow: none;
+			background: none;
+		}
+		.switch-yes-no .switch-label:after, .switch-yes-no .switch-label:before {
+			width: 100%;
+			height: 70%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-yes-no .switch-label:after {
+			color: #FFFFFF;
+			background: #32CD32;
+			backface-visibility: hidden;
+			transform: rotateY(180deg);
+		}
+		.switch-yes-no .switch-label:before {
+			background: #eceeef;
+			backface-visibility: hidden;
+		}
+		.switch-yes-no .switch-handle {
+			display: none;
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label:before {
+			transform: rotateY(180deg)
+		}
+		.switch-yes-no .switch-input:checked ~ .switch-label:after {
+			transform: rotateY(0)
+		}
+
+
+		.switch-slide {
+			padding: 0;
+			margin: 5px 0 0;
+			background: #FFF;
+			border-radius: 0;
+			background-image: none;
+		}
+		.switch-slide .switch-label {
+			box-shadow: none;
+			background: none;
+			overflow: hidden;
+		}
+		.switch-slide .switch-label:after, .switch-slide .switch-label:before {
+			width: 100%;
+			height: 100%;
+			top: 5px;
+			left: 0;
+			text-align: center;
+			padding-top: 10%;
+			box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+		}
+		.switch-slide .switch-label:after {
+			color: #000000;
+			//background: #87CEEB;
+			background: #eceeef;
+			left: -100px;
+		}
+		.switch-slide .switch-label:before {
+			background: #eceeef;
+		}
+		.switch-slide .switch-handle {
+			display: none;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label {
+			background: #FFF;
+			border-color: #0088cc;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label:before {
+			left: 100px;
+		}
+		.switch-slide .switch-input:checked ~ .switch-label:after {
+			left: 0;
+		}
+
+		#slidertext{
+			//position:absolute;
+			font-size: 31px;
+			font-weight: bold;
+			color:#c8c8c8;//#707070;
+			transform: translate(-80px, 0px);
+			-webkit-transform: translate(-80px, 0px);
+			-moz-transform: translate(-80px, 0px);
+			-o-transform: translate(-80px, 0px);
+			-ms-transform: translate(-80px, 0px);
+		}
+		#graph-container {
+			//margin:10px;
+			border:0;
+			//border-radius: 5px;
+			//width:80%;
+			//overflow:hidden;
+			background: #ffffff;
+			//box-shadow: 2px 2px 2px 0px #a6a6a6; 
+		}
+		.hidden { 
+			display: none; 
+		}
+		div.tooltip {
+			color: #222; 
+			background: #fff; 
+			padding: .1em; 
+			text-shadow: #f5f5f5 0 1px 0;
+			border-radius: 2px; 
+			box-shadow: 0px 0px 2px 0px #a6a6a6; 
+			opacity: 0.9; 
+			position: absolute;
+			font-size: small;
+			line-height: 100%;
+			width:100px;
+			z-index:6000;
+		}
+		.bbt{
+			font-size: small;
+			font-weight: normal;
+		}	
+
+		.bbt2{
+			font-size: small;
+			font-weight: normal;
+		}	  
+		#grby {color:#aaa;padding:0;padding-right:5px;border:1px solid #eee}
+		
+		#grby2 {color:#aaa;padding:0;padding-right:5px;border:1px solid #eee}
+		
+		#playpause { 
+			 //display:block; 
+			 height:32px; width:32px; /* dimensions of the image */
+			 //background-repeat:no-repeat;
+			 cursor:pointer;
+			 //align="middle"
+			 transform: translate(0px, -2px);
+			-webkit-transform: translate(0px, -2px);
+			-moz-transform: translate(0px, -2px);
+			-o-transform: translate(0px, -2px);
+			-ms-transform: translate(0px, -2px);
+		}
+		#playpause.play { 
+			background-image:url("img2/play2-pause32.png");
+			display: block;
+		   
+			width: 32px;
+			height:  32px;
+			margin: -1.5px 0;
+			//align="middle"
+		}
+
+		#playpause.pause { 
+			background-image:url("img2/play-pause32.png");
+			display: block;
+			
+			width: 32px;
+			height:  32px;
+			margin: -1.5px 0;
+			//align="middle"
+		}
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+		circle {
+        stroke: black;
+        stroke-width: 1px;
+        opacity: .8;
+      }
+		.normal{
+			stroke-width: 1px;
+			stroke: black;
+		}
+		.unselected-underlined {
+			stroke-width: 3px;
+			stroke: black;
+		}
+		.underlined{
+			stroke-width: 3px;
+			stroke: red;
+		}
+		.label {
+				fill: white;
+				font-size: 16px;
+			  }
+
+		.behind{
+			z-index:-1000;
+			pointer-events: none;
+		}
+		.axis text {
+		//font-family: sans-serif;
+			font-size: 14px;
+		}
+		fieldset.scheduler-border {
+			border: 1px solid #eee !important;
+			padding: 0 0.4em 0.4em 0.4em !important;
+			margin: 0 0 0.1em 0 !important;height:44px;
+			-webkit-box-shadow:  0px 0px 0px 0px #000;
+					box-shadow:  0px 0px 0px 0px #000;
+			color:#aaa;		
+		}
+
+			legend.scheduler-border {
+				font-size: 1.0em !important;
+				font-weight: light !important;
+				text-align: left !important;
+				width:auto;
+				padding:0 1px;
+				border-bottom:none;color:#aaa;
+			}
+			.upward {
+			transform: translate(0px, -25px);
+			-webkit-transform: translate(0px, -25px);
+			-moz-transform: translate(0px, -25px);
+			-o-transform: translate(0px, -25px);
+			-ms-transform: translate(0px, -25px);
+			}
+			.rightward {
+			transform: translate(25px, 0px);
+			-webkit-transform: translate(25px, 0px);
+			-moz-transform: translate(25px, 0px);
+			-o-transform: translate(25px, 0px);
+			-ms-transform: translate(25px, 0px);
+			}
+			.leftward2 {
+			transform: translate(-45px, 0px);
+			-webkit-transform: translate(-45px, 0px);
+			-moz-transform: translate(-45px, 0px);
+			-o-transform: translate(-45px, 0px);
+			-ms-transform: translate(-45px, 0px);
+			}
+			
+			.noUi-horizontal.noUi-extended {
+				padding-right: 32px;
+			}
+			.noUi-horizontal.noUi-extended .noUi-handle {
+				left: -1px;
+			}
+			.noUi-horizontal.noUi-extended .noUi-origin  {
+				right: -32px;
+			}
+			path {
+			  stroke: #fff;
+			  fill-rule: evenodd;
+			}
+			
+		</style>
+		
+
+<script>
+  //(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ // ga('create', 'UA-75769110-1', 'auto');
+ // ga('send', 'pageview');
+
+</script>
+		
+    </head>
+    <body>
+		
+		<table>
+			<tr>
+				<td>
+					<label  class="switch2 switch-slide2" id ="var-col"  style="float:left;" >
+						<input class="switch2-input" type="checkbox" id="selectColor"/>
+						<span class="switch2-label" data-on="Colour-blind friendly" data-off="Colour-blind friendly"></span> 
+						<span class="switch2-handle"></span>
+					</label>
+				</td>
+				<td align="center">
+					<div id="slidertext" style="pointer-events: none;">2014</div>
+				</td>
+				<td>
+					<label class="switch switch-slide"  id ="var-pop" style="float:left">
+						<input class="switch-input" type="checkbox" id="selectGender"  />
+						<span class="switch-label" data-on="Men" data-off="Women"></span> 
+						<span class="switch-handle"></span>
+					</label>
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="3">
+					<div id="per" style="font-size:20px;font-weight: bold;color:#993300;position:absolute;width:200px;" >&nbsp;</div>
+					<div id="popcenter" style="z-index:4000;font-size:20px;font-weight: bold;color:#000000;position:absolute"  >&nbsp;</div>
+					<div id="graph-container"  ></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					
+					<div id="playpause" class="play" style="float:left;"></div>
+					<div style="float:right;pointer-events: none;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;">&nbsp;&nbsp;&nbsp;</div>
+					<div id="red" class="noUi-extended" style="float:left;"></div>
+					
+				</td>
+				
+			</tr>
+			
+		</table>
+		 
+		<div>
+							
+			
+			
+			
+			
+			
+					
+		</div>
+		
+		
+						
+				
+		<script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/flexslider.min.js"></script>
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/masonry.min.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/scripts.js"></script>
+
+        <script type="text/javascript" src="js2/colorbar.js"></script>
+		<script src="js2/jquery-ui.min.js"></script>
+        <script src="js2/colorbrewer.js"></script> 
+        <script src="js2/d3.min.js" charset="utf-8"></script>
+        <script src="js2/d3-legend.min.js"></script>
+        <script src="js2/d3.geo.projection.min.js"></script>
+        <script src="js2/topojson.min.js"></script>
+		<script src="js2/underscore-min.js"></script>
+		<script src="js2/nouislider.min.js"></script>
+	<script>
+var slider = document.getElementById('red');
+	noUiSlider.create(slider, {
+		start: [2014],
+		connect: 'lower',
+		step: 1,
+		range: {
+			'min': 1975,
+			'max': 2014
+		}//,
+		//tooltips: [  wNumb({ decimals: 0 }), wNumb({ decimals: 0 }) ],
+	});
+  
+function is_touch_device() {
+    return !!('ontouchstart' in window);
+ }
+//d3.select(window).on("resize", throttle);
+var duration = 10000;
+var zoom = d3.behavior.zoom()
+    .scaleExtent([1, 19])
+    .on("zoom", move);
+var scalezoom=1.0;
+var highlightedcountry="none";
+var width =0;
+var height =0;
+var width0= 650
+var height0= width0*0.45;
+
+	width = width0;
+	height =height0;
+
+$('#graph-container').bind('mousewheel DOMMouseScroll', function (e) { return false; });
+//var width = ((window.innerWidth-180-60));//document.getElementById('graph-container').offsetWidth;
+//var height = width *0.45;
+// if (height>(window.innerHeight*0.55)){
+
+	// height = (window.innerHeight*0.72);
+	// width = height*2;
+	
+// }
+
+// var width0= window.innerWidth-180-60;
+// var height0= (window.innerHeight*0.72);
+// var width=0;
+// var height =0;
+// if(height0  >= (width0 *0.45) ){
+	// width=width0;
+	// height=width*2;
+// }
+// else{
+	
+	// height=height0;
+	// width= height*2.2222222;
+	// //(window.innerWidth-180-60)*0.45=
+// }
+
+// var width = ((window.innerWidth-180-60));//document.getElementById('graph-container').offsetWidth;
+// var height = width *0.45;
+// if (height>(window.innerHeight*0.55)){
+
+	// height = (window.innerHeight*0.72);
+	
+	
+// }
+
+//document.getElementById('slidertext').style.left=((150+width-30))+"px";
+//document.getElementById('slidertext').style.top=(($( "#graph-container" ).position().top)+(height/2.0)-20)+"px";
+//d3.select("#slidertext").style("dy","20px");
+//document.getElementById('slidertext').style.top=((height*0.5))+"px";
+var topo,projection,path,svg,mg;
+//var graticule = d3.geo.graticule();
+var selected_country="";
+var countries;
+var tooltip = d3.select("#graph-container").append("div").attr("class", "tooltip hidden");
+//document.getElementById('myinfo').style.opacity=0;
+document.getElementById('red').style.width=(width-50)+"px";
+//document.getElementById('imagesbar').style.height=height+"px";
+var cg;
+
+function detectIE() {
+  var ua = window.navigator.userAgent;
+
+  // Test values; Uncomment to check result …
+
+  // IE 10
+  // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
+  
+  // IE 11
+  // ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
+  
+  // IE 12 / Spartan
+  // ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+  
+  // Edge (IE 12+)
+  // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
+
+  var msie = ua.indexOf('MSIE ');
+  if (msie > 0) {
+    // IE 10 or older => return version number
+    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+  }
+
+  var trident = ua.indexOf('Trident/');
+  if (trident > 0) {
+    // IE 11 => return version number
+    var rv = ua.indexOf('rv:');
+    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+  }
+
+  var edge = ua.indexOf('Edge/');
+  if (edge > 0) {
+    // Edge (IE 12+) => return version number
+    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+  }
+
+  // other browser
+  return false;
+}
+
+
+//var nAgt = window.navigator.userAgent;
+var isIE = detectIE();
+//if ((nAgt.indexOf("MSIE")!=-1) || (nAgt.indexOf('Trident/')!=-1)){
+//isIE=true;
+//}
+//console.log(detectIE())
+setup(width,height);
+
+function setup(width,height){
+  
+	projection = d3.geo.cylindricalStereographic()
+    .parallel(45)
+    .rotate([-12, 0])
+    .scale(width/5.5)
+    .translate([width *0.45, height *0.63])
+    .precision(.1);
+
+  path = d3.geo.path().projection(projection);
+  
+  svg = d3.select("#graph-container").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .call(zoom)
+      .append("g");
+  
+	mg = svg.append("g");
+	  
+var mlegend = svg.append("g")
+					.attr("class", "mlegend")
+					.attr("x", 0)
+					.attr("y", 25)
+					.attr("height", 100)
+					.attr("width", 100);
+					
+mlegend.selectAll('g').data(["kg/m\u00b2"])
+				.enter()
+				.append('g')
+				.each(function(d, i) {
+					var g = d3.select(this);
+					var myx =width-48;
+					var myy =45;
+					
+					g.append("text")
+					  .attr("x",myx) 
+					  .attr("y", myy)
+					  .attr("height",30)
+					  .attr("width",100)
+					  .style("fill", "#c8c8c8").style("font-weight", "bold")//.style("font-style", "italic")
+					  .style("font-size","small")
+					  .text(d);
+					
+
+				});
+	
+	var units =""
+	}
+
+d3.json("json/output5.json", function(error, world) {
+	d3.json("json/countries-data.json", function(error, data0) {
+
+		d3.json("json/mini-country-bmi.json", function(error, mdata) {
+		//console.log(mdata)
+			var data1 ={};
+			var data2={};
+			for (country in mdata){
+				data1[country]={};
+				data2[country]={};
+				for (var i=0;i<mdata[country][0].length;i++){
+					data1[country][mdata[country][0][i][0]]=[parseFloat(mdata[country][0][i][1]),parseFloat(mdata[country][0][i][2]),parseFloat(mdata[country][0][i][3])];
+					data2[country][mdata[country][1][i][0]]=[parseFloat(mdata[country][1][i][1]),parseFloat(mdata[country][1][i][2]),parseFloat(mdata[country][1][i][3])];
+				}
+			}
+			
+			//console.log(data2)
+			//});
+				//console.log(data0)
+				var l_countries={};
+				for (elem in data0){
+					if (data0.hasOwnProperty(elem)){
+						l_countries[data0[elem][0]]=elem ;
+					}
+					
+				}
+				
+				// get years nbs
+				//var year2nb={};
+				//for (var i =0;i<data1['France'][2].length;i++){
+				//	year2nb[data1['France'][2][i][0]]=i;
+				//}
+				
+				
+				
+				
+				
+				// get range min and max of all men data
+				var range_men=[1000,0];
+				for (elem in data1){
+					if (data1.hasOwnProperty(elem)){
+						for (time in data1[elem]){
+							if (data1[elem][time][0]<range_men[0]){
+								range_men[0]=data1[elem][time][0];
+							}
+							if (data1[elem][time][0]>range_men[1]){
+								range_men[1]=data1[elem][time][0];
+							}
+						}
+					}
+					
+				}
+				//console.log(range_men)
+				// get range min and max of all women data
+				var range_women=[1000,0];
+				for (elem in data2){
+					if (data2.hasOwnProperty(elem)){
+						for (time in data2[elem]){
+							if (data2[elem][time][0]<range_women[0]){
+								range_women[0]=data2[elem][time][0];
+							}
+							if (data2[elem][time][0]>range_women[1]){
+								range_women[1]=data2[elem][time][0];
+							}
+						}
+					}
+					
+				}
+				//console.log(range_men)
+				//console.log(range_women)
+				
+				cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+				//var cb = colorBar().color(d3.scale.linear().domain([range_men[0], range_men[1]]).range(["#f7fcb9", "#081d58"]).interpolate(d3.interpolateHcl)).size(350).lineWidth(40).precision(4);
+				//var range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+				//console.log(((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0))
+				//var range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+				
+				var range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+				//var range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["green","#cc99ff","red" ]);
+				//var range_c=d3.scale.linear().domain([parseFloat(range_men[0]), parseFloat(range_men[1])]).range(["blue","red" ]);
+				var cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+				
+				//console.log(range_women)
+				cg.call(cb);
+				// ignored zones recalibrated
+				data1["South Sudan"]=data1["Sudan"];
+				data2["South Sudan"]=data2["Sudan"];
+				data1["Pakistan Kashmir"]=data1["Pakistan"];
+				data2["Pakistan Kashmir"]=data2["Pakistan"];
+				data1["India Kashmir"]=data1["India"];
+				data2["India Kashmir"]=data2["India"];
+				data1["Svalbard Islands"]=data1["Norway"];
+				data2["Svalbard Islands"]=data2["Norway"];
+				//console.log(data1)
+				//console.log(data2)
+				
+				var colored_poly;
+				//var countries = topojson.feature(world, world.objects.countries).features;
+				var countries = topojson.feature(world, world.objects.countries).features;
+				
+				
+				//mg.selectAll(".country")
+				//.data(topo)
+				//.enter()
+				//.append(“path”)
+				//.attr("d", path);
+				
+				//console.log(countries)
+				topo = countries;
+				draw(topo);
+				
+				function draw(topo) {
+					countries = mg.selectAll("append").data(topo);
+					var check_g = document.getElementById("selectGender").checked;
+					var check_y = parseInt(slider.noUiSlider.get());
+					//console.log(check_y);
+					colored_poly= countries.enter().append("path")
+					  .attr("class", "country")
+					  .attr("d", path)
+					  .attr("id", function(d,i) { return d.properties.ISO3; })
+					  //.attr("title", function(d,i) { return d.properties.name; })
+					  .style("fill", function(d, i) { 
+						//if (d.properties.ISO3=='COD') return "#cfcfcf" 
+						var isIn = false;
+						
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+							}
+							
+						}
+						var col;
+						if (isIn==false){
+						//	console.log(d.properties.ISO3)
+							col= "#cfcfcf" ;
+						}	
+					
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								col= range_c(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])) ;
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								
+							}
+							
+													
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								col= range_c(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0])) ;
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								
+							}
+							
+						}
+						
+						return col;
+					});
+			  
+
+					//offsets for tooltips
+					var offsetL = document.getElementById('graph-container').offsetLeft+20;
+					var offsetT = document.getElementById('graph-container').offsetTop+10;
+
+					if (isIE){
+						countries
+						.on("mouseover", function(d,i) {
+							//this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+								 });
+						  });
+						countries.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					else{
+						countries
+						.on("mouseover", function(d,i) {
+							this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+									
+									// if (isIn==false){
+										// if (d.properties.ISO3==-99){
+											// return ""
+										// }
+										// return d.properties.ISO3 
+									// }
+									// else{
+									 // return "<b>"+ name+"</b><br><b>No estimates</b>";
+									// }
+									
+								 });
+						  })
+						.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					
+					
+					countries.on("click", function(d,i){
+					//var inf=document.getElementById('myinfo');
+					if(!(is_touch_device())){
+						//inf.style.opacity=1;
+						var isIn = false;
+						var name= ""
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+									name=elem;
+							}
+							else {
+								if (d.properties.CNTR_ID){
+									name=d.properties.CNTR_ID;
+								}
+								//else {name=elem;}
+									
+							}
+							
+						}
+						
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}	
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}									
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " +(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}
+						}
+						}
+					});
+					// .on("click",  function(d,i) {
+						
+						// for (elem in data){
+							// if (data[elem]['ISO3']==d.properties.ISO3){
+								// console.log(elem)
+							// }
+						// }
+						
+					// });
+
+				}
+				
+				function redraw() {
+					//width = document.getElementById('graph-container').offsetWidth;
+					//height = width / 2;
+					//width = (window.innerWidth-180-60);//document.getElementById('graph-container').offsetWidth;
+					//height = width *0.5;
+					d3.select('svg').remove();
+					setup(width,height);
+					draw(topo);
+				}
+				
+				d3.select("#selectGender").on("change", function() {
+					//console.log(this.checked)
+					var check_y = parseInt(slider.noUiSlider.get());
+					var check_g = this.checked;
+					var check_gr = document.getElementById("selectColor").checked;
+					if (check_gr==false){
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+							//cg.call(cb);
+						}
+						else{
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_women[0], range_women[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_women[0], range_women[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+						}
+					}
+					else{
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+							//cg.call(cb);
+						}
+						else{
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_women[0], range_women[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_women[0], range_women[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+						}
+					}
+					
+					
+					//var country = mg.selectAll(".country").data(topo);
+					
+					countries.data(topo)
+						.transition()
+						.duration(0)
+						.style("fill",  function(d) { 
+							if (check_g==true){
+								if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])) ;
+									
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+									
+								}
+								else{
+									if (check_gr==false){
+											return "#cfcfcf" ; 
+										}
+									else{
+											return "#000000" ;
+									}
+								}
+							
+							}
+							else if (check_g==false){
+								if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0])) ;
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+									
+								}
+								else{
+									if (check_gr==false){
+											return "#cfcfcf" ; 
+										}
+									else{
+											return "#000000" ;
+									}
+								}
+							}
+							
+						});
+					var offsetL = document.getElementById('graph-container').offsetLeft+20;
+					var offsetT = document.getElementById('graph-container').offsetTop+10;
+					if (isIE){
+						countries
+						.on("mouseover", function(d,i) {
+							//this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+								 });
+						  });
+						countries.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					else{
+						countries
+						.on("mouseover", function(d,i) {
+							this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+									
+									// if (isIn==false){
+										// if (d.properties.ISO3==-99){
+											// return ""
+										// }
+										// return d.properties.ISO3 
+									// }
+									// else{
+									 // return "<b>"+ name+"</b><br><b>No estimates</b>";
+									// }
+									
+								 });
+						  })
+						.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					countries.on("click", function(d,i){
+					//var inf=document.getElementById('myinfo');
+					if(!(is_touch_device())){
+						//inf.style.opacity=1;
+						var isIn = false;
+						var name= ""
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+									name=elem;
+							}
+							else {
+								if (d.properties.CNTR_ID){
+									name=d.properties.CNTR_ID;
+								}
+								//else {name=elem;}
+									
+							}
+							
+						}
+						
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}	
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}									
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " +(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}
+						}
+						}
+					});
+				});
+				
+				
+				
+				d3.select("#selectColor").on("change", function() { 
+					//console.log(document.getElementById("selectColor").checked)
+					var check_y = parseInt(slider.noUiSlider.get());
+					var check_g = document.getElementById("selectGender").checked;
+					var check_gr = document.getElementById("selectColor").checked
+					if (check_gr==false){
+						//console.log(document.getElementById("selectColor").checked)
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+							//cg.call(cb);
+						}
+						else{
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_women[0], range_women[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_women[0], range_women[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+						}
+					}
+					else{
+						//console.log(document.getElementById("selectColor").checked)
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["hsl(33,87%,29%)" ,"hsl(0,0%,96%)","hsl(175,98%,20%)" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+							//cg.call(cb);
+						}
+						else{
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_women[0], range_women[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_women[0], range_women[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+						}
+					}
+					
+					
+					
+					//var country = mg.selectAll(".country").data(topo);
+					
+					countries.data(topo)
+						.transition()
+						.duration(0)
+						.style("fill",  function(d) { 
+							if (check_g==true){
+								if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])) ;
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+									
+								}
+								else{
+									if (check_gr==false){
+										return "#cfcfcf" ; 
+									}
+									else{
+										return "#000000" ;
+									}
+																
+								}
+							}
+							else if (check_g==false){
+								if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0])) ;
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+									
+								}
+								else{
+									if (check_gr==false){
+										return "#cfcfcf" ; 
+									}
+									else{
+										return "#000000" ;
+									}
+																
+								}
+							}
+							
+						});
+					var offsetL = document.getElementById('graph-container').offsetLeft+20;
+					var offsetT = document.getElementById('graph-container').offsetTop+10;
+					if (isIE){
+						countries
+						.on("mouseover", function(d,i) {
+							//this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+								 });
+						  });
+						countries.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					else{
+						countries
+						.on("mouseover", function(d,i) {
+							this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+									
+									// if (isIn==false){
+										// if (d.properties.ISO3==-99){
+											// return ""
+										// }
+										// return d.properties.ISO3 
+									// }
+									// else{
+									 // return "<b>"+ name+"</b><br><b>No estimates</b>";
+									// }
+									
+								 });
+						  })
+						.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					countries.on("click", function(d,i){
+					//var inf=document.getElementById('myinfo');
+					if(!(is_touch_device())){
+						//inf.style.opacity=1;
+						var isIn = false;
+						var name= ""
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+									name=elem;
+							}
+							else {
+								if (d.properties.CNTR_ID){
+									name=d.properties.CNTR_ID;
+								}
+								//else {name=elem;}
+									
+							}
+							
+						}
+						
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}	
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}									
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " +(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}
+						}
+						}
+					});
+					
+				});
+				
+				
+				
+				var pauseValues = {
+				  lastT: 1975,
+				  currentT: 1975
+				};
+				
+				d3.select("#playpause").on("click", function() {
+					if (document.getElementById('playpause').className=='pause'){
+						document.getElementById('playpause').className='play';
+					}
+					else{
+						
+						if (parseInt(slider.noUiSlider.get())==2014){
+							pauseValues.currentT=1975;
+							slider.noUiSlider.set(1975);
+							
+						}
+						document.getElementById('playpause').className='pause';
+						pauseValues.currentT = parseInt(slider.noUiSlider.get());
+						one_step();
+					}
+				});
+				
+				function one_step(){
+					if((pauseValues.currentT<2014) && (document.getElementById('playpause').className=='pause') ){
+						setTimeout(function(){
+							
+							pauseValues.currentT++;
+							slider.noUiSlider.set(parseInt(pauseValues.currentT));
+							one_step();stepvalue();
+							if (pauseValues.currentT>2014){d3.select('#playpause').attr('class','play');}
+							}, 200)
+					}
+					else{
+						document.getElementById('playpause').className='play';
+					}
+					
+						
+					
+				}
+				
+				if (document.getElementById('playpause').className=='pause'){
+						document.getElementById('playpause').className='play';
+					}
+					// else{
+						// if ($("#red").slider("value")==parseInt(2014)){
+							// pauseValues.currentT==1975;
+							// var check_y = $("#red").slider("value",1975);
+						// }
+						// document.getElementById('playpause').className='pause';
+						// pauseValues.currentT = parseInt($("#red").slider("value"));
+						// one_step();
+					// }
+				
+				
+				
+				
+				function stepvalue(){
+					
+					var check_y = parseInt(slider.noUiSlider.get());;
+					d3.select('#slidertext').text(parseInt(slider.noUiSlider.get()));
+					var check_g = document.getElementById("selectGender").checked;
+					var check_gr = document.getElementById("selectColor").checked;
+					if (check_gr==false){
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["blue","#fee08b","red" ]);
+							
+						}
+						else{
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+							
+						}
+					}
+					else {
+						if (check_g==true){
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							
+						}
+						else{
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							
+						}
+					}
+					
+					
+					//var country = mg.selectAll(".country").data(topo);
+					
+					countries.data(topo)
+						.transition()
+						.duration(0)
+						.style("fill",  function(d) { 
+							//if (isIn==true){
+							//	return "#cfcfcf" 
+							//}
+							//else{
+								if (check_g==true){
+									if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+										return range_c(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])) ;
+										//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+										
+									}
+									else{
+										if (check_gr==false){
+											return "#cfcfcf" ; 
+										}
+										else{
+											return "#000000" ;
+										}
+									}									
+								}
+								else if (check_g==false){
+									if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+										return range_c(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0])) ;
+										//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))	
+									}
+									else{
+										if (check_gr==false){
+											return "#cfcfcf" ; 
+										}
+										else{
+											return "#000000" ;
+										}
+									}
+								}
+							//}
+						});
+					var offsetL = document.getElementById('graph-container').offsetLeft+20;
+					var offsetT = document.getElementById('graph-container').offsetTop+10;
+					//var inf=document.getElementById('myinfo');
+					//if(selected_country){
+						//inf.innerHTML ="Selected country:<br>Name:"+selected_country+" <br>year:"+check_y+"<br>"+"Mean BMI men:" + (parseFloat(data1[selected_country][check_y][0]).toFixed(1))+"<br>Mean BMI Women:" + (parseFloat(data2[selected_country][check_y][0]).toFixed(1))+"<br>"
+					//}
+					//console.log(isIE)
+					
+					if (isIE){
+						countries
+						.on("mouseover", function(d,i) {
+							//this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+								 });
+						  });
+						countries.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					else{
+						countries
+						.on("mouseover", function(d,i) {
+							this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+									
+									// if (isIn==false){
+										// if (d.properties.ISO3==-99){
+											// return ""
+										// }
+										// return d.properties.ISO3 
+									// }
+									// else{
+									 // return "<b>"+ name+"</b><br><b>No estimates</b>";
+									// }
+									
+								 });
+						  })
+						.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					countries.on("click", function(d,i){
+					//var inf=document.getElementById('myinfo');
+					if(!(is_touch_device())){
+						//inf.style.opacity=1;
+						var isIn = false;
+						var name= ""
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+									name=elem;
+							}
+							else {
+								if (d.properties.CNTR_ID){
+									name=d.properties.CNTR_ID;
+								}
+								//else {name=elem;}
+									
+							}
+							
+						}
+						
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}	
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}									
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " +(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}
+						}
+						}
+					});
+				}
+				
+				
+				//console.log(d3.select("#red"))
+				slider.noUiSlider.on('update', function(){				
+					//d3.select('#slidertext').text(parseInt(this.get()));
+					//var check_y = this.get();
+				//$( "#red" ).slider().on("slide", function (e, ui) {				
+					d3.select('#slidertext').text(parseInt(this.get()));
+					var check_y = parseInt(this.get());
+					pauseValues.currentT = parseInt(this.get());
+					var check_g = document.getElementById("selectGender").checked;
+					var check_gr = document.getElementById("selectColor").checked;
+					if (check_gr==false){
+						if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["blue","#fee08b","red" ]);
+							
+						}
+						else{
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+							
+						}
+					}
+					else {
+						if (check_g==true){
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							
+						}
+						else{
+							
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["hsl(175,98%,20%)" ,"hsl(0,0%,96%)","hsl(33,87%,29%)"]).interpolate(d3.interpolateHcl);
+							
+						}
+					}
+					
+					//var country = mg.selectAll(".country").data(topo);
+					//var inf=document.getElementById('myinfo');
+					countries.data(topo)
+						.transition()
+						.duration(0)
+						.style("fill",  function(d) { 
+							if (check_g==true){
+								if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])) ;
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+									
+								}
+								else{
+									if (check_gr==false){
+										return "#cfcfcf" ; 
+									}
+									else{
+										return "#000000" ;
+									}
+																
+								}								
+							}
+							else if (check_g==false){
+								if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+									return range_c(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0])) ;
+									//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))	
+								}
+								else{
+									if (check_gr==false){
+										return "#cfcfcf" ; 
+									}
+									else{
+										return "#000000" ;
+									}
+																
+								}
+							}
+						});
+					var offsetL = document.getElementById('graph-container').offsetLeft+20;
+					var offsetT = document.getElementById('graph-container').offsetTop+10;
+					
+					if(selected_country){
+						//inf.innerHTML ="Selected country:<br>Name:"+selected_country+" <br>year:"+check_y+"<br>"+"Mean BMI men:" + (parseFloat(data1[selected_country][check_y][0]).toFixed(1))+"<br>Mean BMI Women:" + (parseFloat(data2[selected_country][check_y][0]).toFixed(1))+"<br>"
+					}
+					
+					
+					
+					
+					if (isIE){
+						countries
+						.on("mouseover", function(d,i) {
+							//this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+								 });
+						  });
+						countries.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					else{
+						countries
+						.on("mouseover", function(d,i) {
+							this.parentNode.appendChild(this);
+							d3.select(this).style("stroke-width",1.3/scalezoom);
+							d3.select(this).style("stroke","black");
+							highlightedcountry=d.properties.ISO3;
+							var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+							tooltip.classed("hidden", false)
+								 .attr("style", "left:"+(mouse[0]+offsetL)+"px;top:"+(mouse[1]+offsetT)+"px")
+								 .html(function(){
+									var isIn = false;
+									var name= ""
+									for (elem in data0){
+										if (data0[elem][0]==d.properties.ISO3){
+												isIn= true;
+												name=elem;
+										}
+									}
+									if (check_g==true){
+										if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+											//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+											
+										}	
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}									
+									}
+									else if (check_g==false){
+										if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+											if(name=="Svalbard Islands"){
+												name="Norway"
+											}
+											return "<b>"+name +"</b><br><b> " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+"</b> ("+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+") kg/m&#178;"
+										}
+										else{
+											return "<b>"+ name+"</b><br><b>No estimates</b>"
+										}
+									}
+									
+									
+									// if (isIn==false){
+										// if (d.properties.ISO3==-99){
+											// return ""
+										// }
+										// return d.properties.ISO3 
+									// }
+									// else{
+									 // return "<b>"+ name+"</b><br><b>No estimates</b>";
+									// }
+									
+								 });
+						  })
+						.on("mouseout",  function(d,i) {
+							//console.log("out")
+							d3.select(this).style("stroke-width",0.3/scalezoom);
+							d3.select(this).style("stroke","#ffffff");
+							tooltip.classed("hidden", true);
+							highlightedcountry="none";
+						});
+					}
+					countries.on("click", function(d,i){
+					//var inf=document.getElementById('myinfo');
+					if(!(is_touch_device())){
+						//inf.style.opacity=1;
+						var isIn = false;
+						var name= ""
+						for (elem in data0){
+							if (data0[elem][0]==d.properties.ISO3){
+									isIn= true;
+									name=elem;
+							}
+							else {
+								if (d.properties.CNTR_ID){
+									name=d.properties.CNTR_ID;
+								}
+								//else {name=elem;}
+									
+							}
+							
+						}
+						
+						if (check_g==true){
+							if (data1.hasOwnProperty(l_countries[d.properties.ISO3])){
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}	
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}									
+						}
+						else if (check_g==false){
+							if (data2.hasOwnProperty(l_countries[d.properties.ISO3])){
+								//return "<b>"+ name+"</b><br><b>No estimates</b>" +" " +(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1)) ;
+								selected_country=l_countries[d.properties.ISO3];
+								window.sessionStorage.setItem("country_name",selected_country);
+								// window.location.href = 'mean-bmi-plot.1.4.html';
+								//inf.innerHTML ="<b>"+name +"</b><br>year:"+check_y+"<br><b>men</b> <br>mean body max index " + (parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br><b>women</b> <br> mean body max index " + (parseFloat(data2[l_countries[d.properties.ISO3]][check_y][0]).toFixed(1))+" kg/m&#178;<br><i>(95% credible interval "+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][1]).toFixed(1))+"-"+(parseFloat(data2[l_countries[d.properties.ISO3]][check_y][2]).toFixed(1))+")</i><br>"
+								//console.log(color_range_height(parseFloat(data1[l_countries[d.properties.ISO3]][check_y][0])))
+								//inf.innerHTML =""+name +" data";
+							}
+							else{
+								selected_country="";
+								return "<b>"+ name+"</b><br><b>No estimates</b>"
+							}
+						}
+						}
+					});
+				});
+			
+
+			// resise window	
+			window.onresize = updateWindow;
+			
+			function updateWindow(){
+				width0= 650
+				height0= width0*0.45;
+				
+					width = width0;
+					height =height0;
+				
+				//setup(width,height);
+				redraw();
+				document.getElementById('red').style.width=(width-50)+"px";
+				var check_g = document.getElementById("selectGender").checked;
+				if (check_g==true){
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_men[0], range_men[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_men[0]),((parseFloat(range_men[1])+parseFloat(range_men[0]))/2.0), parseFloat(range_men[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_men[0], range_men[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+							//cg.call(cb);
+						}
+						else{
+							//mx1 = d3.scale.linear().range([0, 200]).domain([range_women[0], range_women[1]]);
+							cg.html("");
+							cg.remove();
+							cg = svg.append("g").attr("transform","translate("+(width-30)+",55)").classed("colorbar",true);
+							range_c=d3.scale.linear().domain([parseFloat(range_women[0]),((parseFloat(range_women[1])+parseFloat(range_women[0]))/2.0), parseFloat(range_women[1])]).range(["blue","#fee08b","red" ]);
+							//cb = colorBar().color(range_c).size(350).lineWidth(40).precision(4);
+							cb = colorBar().color(range_c).size(height*0.7).lineWidth(width*0.01).precision(4);
+							cg.call(cb);
+							//range_c=d3.scale.linear().domain([range_women[0], range_women[1]]).range(["hsl(62,100%,90%)" ,"hsl(222,30%,20%)"]).interpolate(d3.interpolateHcl);
+						}
+			}	
+			
+				
+		});
+	});
+	
+});
+
+
+
+//function playpause() {
+	
+//}
+
+
+function move() {
+
+  var t = d3.event.translate;
+  var s = d3.event.scale; 
+  zscale = s;
+  var h = height/4;
+
+
+  t[0] = Math.min(
+    (width/height)  * (s - 1), 
+    Math.max( width * (1 - s), t[0] )
+  );
+
+  t[1] = Math.min(
+    h * (s - 1) + h * s, 
+    Math.max(height  * (1 - s) - h * s, t[1])
+  );
+
+  zoom.translate(t);
+  mg.attr("transform", "translate(" + t + ")scale(" + s + ")");
+	scalezoom=s;
+  //adjust the country hover stroke width based on zoom level
+  ////this.parentNode.appendChild(this);
+  d3.selectAll(".country").style("stroke-width", function (d,i) {if(d.properties.ISO3==highlightedcountry) {return (1.3/(s))} else {return (0.3/s)}});
+  //d3.selectAll(".country").style("stroke-width", function (d,i) {if(i==highlightedcountry) {return (1.3/s)} else {return (0.3/s)}});
+
+}
+
+
+
+
+</script>
+
+    </body>
+</html>

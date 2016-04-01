@@ -1,0 +1,247 @@
+/****** PLACE YOUR CUSTOM STYLES HERE ******/
+p.lead {
+  text-align: Justify;
+}
+
+footer {
+  padding: 42px 0 22px;
+}
+
+.nav-bar {
+  height: 75px;
+  max-height: 75px;
+  line-height: 70px;
+}
+
+.nav-bar .module,
+.nav-bar .module-group {
+  height: 75px;
+}
+.nav-bar a {
+  height: 75px;
+}
+
+nav.nav-centered .logo {
+  max-height: 150px;
+  margin: 15px 0 10px 0;
+}
+
+.logo {
+    max-height: 90%;
+}
+
+.menu li a {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #292929;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.menu > li > ul li a {
+  text-transform: none !important;
+}
+
+.module {
+    padding: 0 22px;
+}
+
+.breadcrumb-2 > li + li:before {
+    padding: 0 4px !important;
+}
+.breadcrumb-2 li a, .breadcrumb-2 li {
+    letter-spacing: .5px !important;
+    font-size: 12px !important;
+}
+h2.uppercase {
+    letter-spacing: 5px !important;
+}
+.ncdhome-slider .slides li { height: 450px; }
+
+.page-title-1,
+.page-title-2 {
+  height: 150px;
+}
+
+.feature.boxed.datadownload {
+    background: rgba(255,245,230,1);
+}
+
+.my-nav-footer {
+    height: 0 !important;
+}
+
+.my-nav-footer li{
+	margin-right: 17px;
+}
+
+.my-nav-footer li a {
+    font-size: 10px;
+	font-weight: 600;
+	color: #FFF;
+}
+.breadcrumb-2 li a, .breadcrumb-2 li {
+	text-transform: none;
+}
+/****** PUBBLICATIONS ******/
+
+.publications-list .publication {
+    padding-bottom: 4em;
+}
+
+.publications-list .publication p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.publications-list .publication .publication-abstract {
+    padding: 0.5em 0 0.6em;
+    width: 90%;
+    font-family: Georgia,Times,"Times New Roman",serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #4F4F4F;
+    line-height: 18px !important;
+}
+
+#tab-download.button-tabs.vertical > .content {
+    min-width: 70% !important;
+}
+
+.newsmedia, .lastpublications, .aboutus-short {
+	text-align: justify !important;
+}
+
+.button-tabs .tab-title span {
+	text-transform: none !important;
+}
+/****** SPECIAL TABLE ******/
+
+
+.rwd-table, .rwd2-table {
+  margin: 1em 0;
+  min-width: 300px;
+}
+.rwd-table tr, .rwd2-table tr {
+  border-top: 1px solid #f9ad19;
+  border-bottom: 1px solid #f9ad19;
+}
+.rwd-table th, .rwd2-table th {
+  display: none;
+}
+.rwd-table td, .rwd2-table td {
+  display: block;
+}
+.rwd-table td:first-child, .rwd2-table td:first-child {
+  padding-top: .5em;
+}
+.rwd-table td:last-child, .rwd2-table td:last-child {
+  padding-bottom: .5em;
+}
+.rwd-table td:before, .rwd2-table td:before {
+  content: attr(data-th) ": ";
+  color: #666666 !important;
+  font-weight: bold;
+  text-transform: none !important;
+  width: 6.5em;
+  display: inline-block;
+}
+@media (min-width: 480px) {
+  .rwd-table td:before, .rwd2-table td:before {
+    display: none;
+  }
+}
+.rwd-table th, .rwd2-table th {
+  font-size: 14px;
+  text-align: center !important;
+}
+.rwd-table td, .rwd2-table td {
+  text-align: left;
+}
+@media (min-width: 480px) {
+  .rwd-table th, .rwd-table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .rwd-table td:first-child {
+    padding-left: 0;
+    font-size: 11px !important;
+    line-height: 14px !important;
+    width: 12%;
+  }
+  .rwd-table th:last-child, .rwd-table td:last-child {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 480px) {
+  .rwd2-table th, .rwd2-table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .rwd2-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table th:last-child, .rwd-table td:last-child {
+    padding-right: 0;
+  }
+}
+
+.rwd-table, .rwd2-table {
+  background: #FFFFFF;
+  border-radius: 1.2em;
+  overflow: hidden;
+}
+.rwd-table tr, .rwd2-table tr {
+  border-color: #fabf4b;
+}
+.rwd-table th, .rwd-table td, .rwd2-table th, .rwd2-table td {
+  margin: .5em 1em;
+}
+.rwd2-table th, .rwd2-table td {
+  vertical-align: top;
+}
+.rwd2-table th p, .rwd2-table td p {
+  font-size: 11px !important;
+  line-height: 14px !important;
+}
+@media (min-width: 480px) {
+  .rwd-table th, .rwd-table td, .rwd2-table th, .rwd2-table td {
+    padding: 1em !important;
+  }
+}
+.rwd-table th, .rwd2-table th {
+  background: #f9ad19;
+}
+.rwd-table th, .rwd-table td:before, .rwd2-table th, .rwd2-table td:before {
+  color: #666666;
+  text-transform: none;
+  text-align: left;
+}
+
+.rwd-table .tooltip > .tooltip-inner, .rwd2-table .tooltip > .tooltip-inner {
+    background-color: #999999; 
+    color: #FFFFFF; 
+    border: 1px solid f9ad19;
+	border-radius: 1.2em;
+    padding: 15px;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.minititle {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.image-ontop {
+	vertical-align: top !important;
+}
